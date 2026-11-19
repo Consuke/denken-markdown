@@ -10,7 +10,7 @@ sourceUrl: "https://www.shiken.or.jp/chief/upload/20261115_ch_second_q01.pdf#pag
 sourceNote: "ユーザー提供PDFの7ページ（冊子5ページ）から問題文のみ転記。タイトルは整理用に付記し、改行・全半角・数式表記をMarkdown/LaTeXに整形。図は原本から切り出し。表紙・答案用紙記入上の注意・科目共通の問題選択案内は省略。計算の共通の注意事項は原本PDF2ページを参照。"
 publishedAt: "2026-11-18"
 updatedAt: "2026-11-18"
-reviewStatus: draft
+reviewStatus: published
 sample: false
 description: "2026年度の電験二種二次試験、電力・管理の問4。三相高圧配電線の電圧と接続可能な太陽光発電出力に関する問題文。"
 ---

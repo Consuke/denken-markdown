@@ -11,7 +11,7 @@ answerSourceUrl: "https://www.shiken.or.jp/chief/upload/20201122_ch_second_a01.p
 sourceNote: "ユーザー提供の問題PDF 3ページと公式標準解答PDF 1・2ページを転記。タイトルは整理用に付記。改行・全半角・数式表記をMarkdown/LaTeXに整形し，図は原本から切り抜き。表紙・答案用紙記入上の注意・科目共通の問題選択案内・柱・ページ番号は省略。共通の有効数字等は原本2ページ参照。式番号の丸数字は括弧数字に整形。"
 publishedAt: "2026-11-18"
 updatedAt: "2026-11-18"
-reviewStatus: "draft"
+reviewStatus: published
 sample: false
 description: "2020年度の電験二種二次試験，電力・管理の問1。フランシス水車の比速度と定格回転速度の問題と公式標準解答。"
 ---

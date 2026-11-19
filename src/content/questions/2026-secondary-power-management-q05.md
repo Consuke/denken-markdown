@@ -10,7 +10,7 @@ sourceUrl: "https://www.shiken.or.jp/chief/upload/20261115_ch_second_q01.pdf#pag
 sourceNote: "ユーザー提供PDFの8ページ（冊子6ページ）から問題文のみ転記。タイトルは整理用に付記し、改行・全半角を整形。表紙・答案用紙記入上の注意・科目共通の問題選択案内は省略。"
 publishedAt: "2026-11-18"
 updatedAt: "2026-11-18"
-reviewStatus: draft
+reviewStatus: published
 sample: false
 description: "2026年度の電験二種二次試験、電力・管理の問5。特別高圧架空電線路による通信線への電磁誘導作用に関する問題文。"
 ---
