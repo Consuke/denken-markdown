@@ -153,9 +153,9 @@ for (const entry of visible) {
     if (node.type === 'math' || node.type === 'inlineMath')
       tex.push(node.value);
   });
-  const rendered = $('[data-copy-tex]')
+  const rendered = $('.formula[data-tex]')
     .toArray()
-    .map((element) => $(element).attr('data-copy-tex'));
+    .map((element) => $(element).attr('data-tex'));
   expect(
     JSON.stringify(tex) === JSON.stringify(rendered),
     `${entry.id}: AST由来のLaTeXと生成HTMLが一致しません`,

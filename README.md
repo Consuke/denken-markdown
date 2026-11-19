@@ -119,10 +119,10 @@ $$
 
 [markdown-export.ts](src/lib/markdown-export.ts)がASTのH2とoffsetから原文を切り出します。見出し行を除いた原文の改行・デリミタを保存するため、コピー結果の先頭・末尾に空行が含まれる場合があります。文字列splitやMarkdownの再シリアライズは使いません。
 
-[math.ts](src/lib/math.ts)が`inlineMath` / `math`ノードの`value`をHASTのプロパティとしてコピー用属性に保持します。HTMLエスケープはシリアライザーに任せます。セクションは切り出したASTを直接HTMLへ変換します。KaTeXのHTML・MathML・annotationから逆変換しません。
+[math.ts](src/lib/math.ts)が`inlineMath` / `math`ノードの`value`を検証用の`data-tex`属性に保持します。HTMLエスケープはシリアライザーに任せます。セクションは切り出したASTを直接HTMLへ変換します。KaTeXのHTML・MathML・annotationから逆変換しません。
 
 - 問題文・解答のボタンは、それぞれのセクションのMarkdownだけをコピーします。
-- 数式横の「LaTeX」は`$` / `$$`を除く式の中身をコピーします。
+- 数式のLaTeX原文も、問題文・解答のMarkdownコピーに含まれます。数式ごとのコピーボタンは表示しません。
 - `navigator.clipboard.writeText()`を使い、成功・失敗を`aria-live`で通知。HTTPSまたはlocalhostで動作します。許可拒否時は失敗を表示します。
 - 本文・数式・解答開閉はJS無効でも利用可能。コピーボタンはJS有効時だけ表示します。
 - 原文をそのままClipboard APIへ渡しますが、OSや貼り付け先によって改行コードが変換される場合があります（WindowsのCRLF等）。

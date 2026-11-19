@@ -17,6 +17,8 @@ test('問題文だけの2026年度ページで図と数式を表示し、不要�
   ]) {
     await page.goto('/questions/' + id + '/');
     await expect(page.locator('#question')).toBeVisible();
+    await expect(page.locator('#question .prose button')).toHaveCount(0);
+    await expect(page.locator('#question math').first()).toBeAttached();
     await expect(
       page.locator('#answer, #explanation, #knowledge-title'),
     ).toHaveCount(0);
@@ -92,7 +94,7 @@ test('分類・年度・詳細・関連問題を辿れる', async ({ page }) => 
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('訂正依頼');
 });
 
-test('取り込んだ公式解答を開閉し、問題・解答・LaTeXを原文どおりコピーできる', async ({
+test('取り込んだ公式解答を開閉し、問題・解答を原文どおりコピーできる', async ({
   page,
 }, testInfo) => {
   test.setTimeout(120_000);
@@ -137,15 +139,6 @@ test('取り込んだ公式解答を開閉し、問題・解答・LaTeXを原文
         () => (window as unknown as { copied: string }).copied,
       ),
     ).toBe(original.answer?.markdown);
-    const formula = page.locator('#answer [data-copy-tex]').first();
-    if (await formula.count()) {
-      await formula.click();
-      expect(
-        await page.evaluate(
-          () => (window as unknown as { copied: string }).copied,
-        ),
-      ).toBe(await formula.getAttribute('data-copy-tex'));
-    }
     for (const picture of await page.locator('#answer img').all()) {
       await expect(picture).toHaveJSProperty('complete', true);
       expect(
@@ -168,7 +161,7 @@ test('取り込んだ公式解答を開閉し、問題・解答・LaTeXを原文
   }
 });
 
-test('MarkdownとLaTeXのコピー値が原文と一致し、成功・失敗を通知する', async ({
+test('Markdownのコピー値が数式を含めて原文と一致し、成功・失敗を通知する', async ({
   page,
 }) => {
   // ブラウザ差・OSの権限に依存しない検証。実際のClipboard APIは別ケースで確認。
@@ -209,16 +202,6 @@ test('MarkdownとLaTeXのコピー値が原文と一致し、成功・失敗を�
       ),
     )
     .toBe(sections.answer?.markdown);
-  const formula = page.locator('[data-copy-tex]').first();
-  const tex = await formula.getAttribute('data-copy-tex');
-  await formula.click();
-  await expect
-    .poll(() =>
-      page.evaluate(() =>
-        (window as unknown as { copied: string[] }).copied.at(-1),
-      ),
-    )
-    .toBe(tex);
   await page.evaluate(() => {
     (window as unknown as { failCopy: boolean }).failCopy = true;
   });
@@ -248,12 +231,6 @@ test('実際のClipboard APIへ書き込める', async ({
       ),
     )
     .toBe(sections.question.markdown.replace(/\r\n/g, '\n'));
-  const formula = page.locator('[data-copy-tex]').first();
-  const tex = await formula.getAttribute('data-copy-tex');
-  await formula.click();
-  await expect
-    .poll(() => page.evaluate(() => navigator.clipboard.readText()))
-    .toBe(tex);
 });
 
 test('JavaScript無効でも本文・数式が表示され、キーボードで解答を開ける', async ({

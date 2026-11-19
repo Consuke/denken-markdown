@@ -21,7 +21,8 @@ describe('数式原文と安全なHTML', () => {
     const md = mode === 'inline' ? `$${tex}$` : `$$\n${tex}\n$$`;
     const html = await renderSection(extractSections(document(md)).question);
     const $ = load(html);
-    expect($('button[data-copy-tex]').attr('data-copy-tex')).toBe(tex);
+    expect($('.formula').attr('data-tex')).toBe(tex);
+    expect($('button').length).toBe(0);
     expect($('.katex').length).toBe(1);
     expect($('math').length).toBe(1);
     expect($('script').length).toBe(0);
@@ -41,11 +42,11 @@ describe('数式原文と安全なHTML', () => {
     expect($('img').length).toBe(0);
     expect(JSON.parse($('#payload').text())).toEqual(value);
   });
-  it('コードブロック内の$式$は数式コピー対象にしない', async () => {
+  it('コードブロック内の$式$は数式として扱わない', async () => {
     const html = await renderSection(
       extractSections(document('```txt\n$not_math$\n```')).question,
     );
-    expect(load(html)('[data-copy-tex]').length).toBe(0);
+    expect(load(html)('.formula[data-tex]').length).toBe(0);
   });
   it('不正LaTeXとmathコードフェンスをビルド前に拒否する', () => {
     expect(() => validateMath('$\\thisCommandDoesNotExist{x}$')).toThrow(

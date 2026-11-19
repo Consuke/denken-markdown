@@ -42,7 +42,7 @@ export function validateMath(markdown: string): number {
   return validateMathTree(parseMarkdown(markdown));
 }
 
-/** KaTeXの変換より前に、MDAST valueからコピー用ソースを保持する。 */
+/** KaTeXの変換より前に、MDAST valueから検証用の数式原文を保持する。 */
 export const remarkFormulaSources: Plugin<[], MdastRoot> = () => (tree) => {
   validateMathTree(tree);
   visit(tree, (node) => {
@@ -61,6 +61,7 @@ export const remarkFormulaSources: Plugin<[], MdastRoot> = () => (tree) => {
       hName: display ? 'div' : 'span',
       hProperties: {
         className: ['formula', display ? 'formula-block' : 'formula-inline'],
+        dataTex: node.value,
       },
       hChildren: [
         {
@@ -77,19 +78,6 @@ export const remarkFormulaSources: Plugin<[], MdastRoot> = () => (tree) => {
               : {}),
           },
           children: [code],
-        },
-        {
-          type: 'element',
-          tagName: 'button',
-          properties: {
-            type: 'button',
-            className: ['copy-button', 'formula-copy'],
-            dataCopyTex: node.value,
-            ariaLabel: 'この数式のLaTeXをコピー',
-            title: 'LaTeXをコピー',
-            hidden: true,
-          },
-          children: [{ type: 'text', value: 'LaTeX' }],
         },
       ],
     };

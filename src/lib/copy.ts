@@ -1,20 +1,18 @@
-/** HTML属性・JSONペイロードはいずれも元Markdown ASTから生成。 */
+/** JSONペイロードは元Markdown ASTから生成。 */
 export function installCopyControls(): void {
   const live = document.querySelector<HTMLElement>('#copy-status');
   const payloadNode = document.querySelector('#copy-sources');
   const payload: Record<string, string> = payloadNode
     ? JSON.parse(payloadNode.textContent ?? '{}')
     : {};
-  const buttons = document.querySelectorAll<HTMLButtonElement>(
-    '[data-copy-key], [data-copy-tex]',
-  );
+  const buttons =
+    document.querySelectorAll<HTMLButtonElement>('[data-copy-key]');
   let attempt = 0;
   for (const button of buttons) {
     button.hidden = false;
     button.addEventListener('click', async () => {
       const current = ++attempt;
-      const value =
-        button.dataset.copyTex ?? payload[button.dataset.copyKey ?? ''];
+      const value = payload[button.dataset.copyKey ?? ''];
       if (live) live.textContent = '';
       button.disabled = true;
       let message: string;

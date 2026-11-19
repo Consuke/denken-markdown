@@ -5,7 +5,7 @@ import { sortQuestions } from './visibility';
 export function questionDescription(data: QuestionData): string {
   return (
     data.description ??
-    `${data.sample ? '架空の自作サンプル。公式過去問ではありません。' : ''}${data.year}年度・二次試験 ${subjects[data.subject].label} 問${data.questionNumber}${data.partNumber ? ` (${data.partNumber})` : ''}「${data.title}」の問題文。MarkdownとLaTeXをコピーできます。`
+    `${data.sample ? '架空の自作サンプル。公式過去問ではありません。' : ''}${data.year}年度・二次試験 ${subjects[data.subject].label} 問${data.questionNumber}${data.partNumber ? ` (${data.partNumber})` : ''}「${data.title}」の問題文。Markdown形式でコピーできます。`
   );
 }
 
