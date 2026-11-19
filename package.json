@@ -1,0 +1,64 @@
+{
+  "name": "denken-2-library",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24.13.0 <25",
+    "npm": ">=11"
+  },
+  "scripts": {
+    "dev": "cross-env ASTRO_TELEMETRY_DISABLED=1 astro dev",
+    "check": "cross-env ASTRO_TELEMETRY_DISABLED=1 astro check",
+    "build": "npm run validate:content && node scripts/clean-output.mjs && cross-env LOCAL_SAMPLE_PREVIEW=0 ASTRO_TELEMETRY_DISABLED=1 astro build && npm run validate:output",
+    "build:preview": "npm run validate:content && node scripts/clean-output.mjs --preview && cross-env LOCAL_SAMPLE_PREVIEW=1 ASTRO_TELEMETRY_DISABLED=1 astro build --mode sample-preview && tsx scripts/validate-output.ts --preview",
+    "preview": "cross-env ASTRO_TELEMETRY_DISABLED=1 astro preview",
+    "preview:samples": "cross-env LOCAL_SAMPLE_PREVIEW=1 ASTRO_TELEMETRY_DISABLED=1 astro preview --mode sample-preview",
+    "validate:content": "tsx scripts/validate-content.ts && tsx scripts/validate-math.ts",
+    "validate:math": "tsx scripts/validate-math.ts",
+    "validate:links": "tsx scripts/validate-links.ts",
+    "validate:output": "tsx scripts/validate-output.ts",
+    "test": "vitest run",
+    "test:e2e": "npm run build:preview && cross-env PLAYWRIGHT_BROWSERS_PATH=0 playwright test",
+    "browsers:install": "cross-env PLAYWRIGHT_BROWSERS_PATH=0 playwright install chromium webkit",
+    "generate:og": "cross-env PLAYWRIGHT_BROWSERS_PATH=0 node scripts/generate-og.mjs",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "overrides": {
+    "katex": "$katex"
+  },
+  "dependencies": {
+    "@astrojs/markdown-remark": "7.3.9",
+    "@astrojs/sitemap": "3.7.5",
+    "astro": "7.4.12",
+    "katex": "0.19.1",
+    "mdast-util-math": "3.0.0",
+    "mdast-util-to-string": "4.0.0",
+    "rehype-katex": "7.0.1",
+    "rehype-stringify": "10.0.1",
+    "remark-gfm": "4.0.1",
+    "remark-math": "6.0.0",
+    "remark-parse": "11.0.0",
+    "remark-rehype": "11.1.2",
+    "unified": "11.0.5",
+    "unist-util-visit": "5.2.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.12",
+    "@playwright/test": "1.65.1",
+    "@types/hast": "3.0.5",
+    "@types/katex": "0.16.8",
+    "@types/mdast": "4.0.4",
+    "@types/node": "24.19.2",
+    "@types/unist": "3.0.3",
+    "cheerio": "1.2.0",
+    "cross-env": "10.1.0",
+    "prettier": "3.10.1",
+    "prettier-plugin-astro": "1.1.2",
+    "tsx": "4.23.15",
+    "typescript": "5.9.3",
+    "vite": "8.3.8",
+    "vitest": "5.1.0"
+  }
+}

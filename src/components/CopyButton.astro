@@ -1,0 +1,21 @@
+---
+interface Props {
+  section: 'question' | 'answer';
+  label: string;
+}
+const { section, label } = Astro.props;
+---
+
+<button
+  type="button"
+  class="copy-button markdown-copy"
+  data-copy-key={section}
+  hidden
+>
+  {label}
+</button>
+
+<script>
+  import { installCopyControls } from '../lib/copy';
+  installCopyControls();
+</script>

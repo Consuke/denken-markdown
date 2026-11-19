@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BrowseFilters from '../components/BrowseFilters.astro';
+import { getVisibleQuestions } from '../lib/questions';
+const questions = await getVisibleQuestions();
+---
+
+<BaseLayout title="問題を探す">
+  <div class="reading-width">
+    <h1>問題を探す</h1>
+    {questions.some((question) => question.data.sample) && (
+      <p class="sample-notice">架空のサンプル問題を含みます。</p>
+    )}
+    {questions.length === 0 && <p>公開済みの問題はまだありません。</p>}
+    <BrowseFilters />
+    <p class="all-questions">
+      <a href="/questions/">すべての問題を見る</a>
+    </p>
+  </div>
+</BaseLayout>

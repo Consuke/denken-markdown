@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+const email = import.meta.env.PUBLIC_CONTACT_EMAIL;
+const hasEmail =
+  typeof email === 'string' && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+---
+
+<BaseLayout
+  title="訂正依頼"
+  description="問題・解説の誤りや出典に関する連絡先。"
+>
+  <article class="reading-width prose">
+    <Breadcrumbs items={[{ label: '訂正依頼' }]} />
+    <h1>訂正依頼</h1>
+    <p>以下の内容を添えてご連絡ください。</p>
+    <ul>
+      <li>該当ページのURLまたは問題ID</li>
+      <li>訂正が必要な箇所と、その理由</li>
+      <li>確認に役立つ資料（あれば）</li>
+    </ul>
+    {hasEmail ? (
+      <p>
+        連絡先：
+        <a
+          href={
+            'mailto:' +
+            email +
+            '?subject=' +
+            encodeURIComponent('電験二種 過去問・解説 訂正依頼')
+          }
+        >
+          {email}
+        </a>
+      </p>
+    ) : (
+      <p>連絡先は準備中です。</p>
+    )}
+    <p>確認後、内容と更新日を修正します。</p>
+  </article>
+</BaseLayout>

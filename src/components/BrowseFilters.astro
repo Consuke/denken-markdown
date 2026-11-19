@@ -1,0 +1,43 @@
+---
+import { getVisibleQuestions } from '../lib/questions';
+import { subjects, topics, subjectSlugs, topicSlugs } from '../lib/taxonomy';
+const all = await getVisibleQuestions();
+const years = [...new Set(all.map((question) => question.data.year))].sort(
+  (a, b) => b - a,
+);
+---
+
+<nav class="browse-filters" aria-label="問題の分類から探す">
+  <section>
+    <h2>科目別</h2>
+    <ul>
+      {subjectSlugs.map((subject) => (
+        <li>
+          <a href={'/subjects/' + subject + '/'}>{subjects[subject].label}</a>
+        </li>
+      ))}
+    </ul>
+  </section>
+  {years.length > 0 && (
+    <section>
+      <h2>年度別</h2>
+      <ul>
+        {years.map((year) => (
+          <li>
+            <a href={'/years/' + year + '/'}>{year}年度</a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+  <section>
+    <h2>分野別</h2>
+    <ul>
+      {topicSlugs.map((topic) => (
+        <li>
+          <a href={'/topics/' + topic + '/'}>{topics[topic].label}</a>
+        </li>
+      ))}
+    </ul>
+  </section>
+</nav>

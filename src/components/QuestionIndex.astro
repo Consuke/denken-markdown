@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs, { type Crumb } from './Breadcrumbs.astro';
+import BrowseFilters from './BrowseFilters.astro';
+import QuestionList from './QuestionList.astro';
+import type { Question } from '../lib/questions';
+interface Props {
+  title: string;
+  description: string;
+  questions: Question[];
+  breadcrumbs: Crumb[];
+}
+const { title, description, questions, breadcrumbs } = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="reading-width">
+    <Breadcrumbs items={breadcrumbs} />
+    <header class="page-heading">
+      <h1>{title}</h1>
+      <span class="question-count">{questions.length}問</span>
+    </header>
+    <details class="browse-options">
+      <summary>科目・年度・分野を選ぶ</summary>
+      <BrowseFilters />
+    </details>
+    <QuestionList questions={questions} />
+  </div>
+</BaseLayout>

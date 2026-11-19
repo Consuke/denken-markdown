@@ -1,0 +1,147 @@
+{
+  "year": 2025,
+  "questions": [
+    {
+      "subject": "power-management",
+      "q": 1,
+      "title": "水車・発電機の劣化診断技術",
+      "topics": ["hydro-generation", "equipment-maintenance"],
+      "questionPages": [3, 4],
+      "answerPages": [1]
+    },
+    {
+      "subject": "power-management",
+      "q": 2,
+      "title": "中性点抵抗接地系統の1線地絡電流",
+      "topics": ["grounding", "power-systems"],
+      "questionPages": [5, 6],
+      "answerPages": [2]
+    },
+    {
+      "subject": "power-management",
+      "q": 3,
+      "title": "変電所の受電電圧と短絡容量",
+      "topics": ["power-systems", "transformers"],
+      "questionPages": [7],
+      "answerPages": [3, 4]
+    },
+    {
+      "subject": "power-management",
+      "q": 4,
+      "title": "配電線のループ切替と逆潮流",
+      "topics": ["transmission", "photovoltaics"],
+      "questionPages": [8],
+      "answerPages": [5]
+    },
+    {
+      "subject": "power-management",
+      "q": 5,
+      "title": "電路の絶縁性能と誘電正接測定",
+      "topics": ["insulation", "equipment-maintenance"],
+      "questionPages": [9, 10],
+      "answerPages": [6]
+    },
+    {
+      "subject": "power-management",
+      "q": 6,
+      "title": "需給計画とデマンドレスポンス",
+      "topics": ["power-systems", "load-characteristics"],
+      "questionPages": [11],
+      "answerPages": [7]
+    },
+    {
+      "subject": "machine-control",
+      "q": 1,
+      "title": "同期電動機のフェーザ図とV曲線",
+      "topics": ["rotating-machines"],
+      "questionPages": [3, 4],
+      "answerPages": [8, 9]
+    },
+    {
+      "subject": "machine-control",
+      "q": 2,
+      "title": "誘導電動機の滑り・損失・出力",
+      "topics": ["rotating-machines"],
+      "questionPages": [5],
+      "answerPages": [10, 11]
+    },
+    {
+      "subject": "machine-control",
+      "q": 3,
+      "title": "単相ブリッジ整流回路の平滑と出力",
+      "topics": ["rectifiers"],
+      "questionPages": [6, 7],
+      "answerPages": [12, 13]
+    },
+    {
+      "subject": "machine-control",
+      "q": 4,
+      "title": "フィードバック制御の定常偏差と応答",
+      "topics": ["control", "feedback"],
+      "questionPages": [8],
+      "answerPages": [14, 15, 16]
+    }
+  ],
+  "figures": [
+    {
+      "type": "power-management",
+      "page": 6,
+      "box": [150, 145, 640, 205],
+      "file": "2025-secondary-power-management-q02-fig01.png"
+    },
+    {
+      "type": "power-management",
+      "page": 7,
+      "box": [125, 380, 685, 445],
+      "file": "2025-secondary-power-management-q03-fig01.png"
+    },
+    {
+      "type": "answers",
+      "page": 6,
+      "box": [220, 650, 125, 130],
+      "file": "2025-secondary-power-management-q05-answer-fig01.png"
+    },
+    {
+      "type": "machine-control",
+      "page": 4,
+      "box": [320, 150, 270, 290],
+      "file": "2025-secondary-machine-control-q01-fig01.png"
+    },
+    {
+      "type": "answers",
+      "page": 8,
+      "box": [305, 360, 295, 255],
+      "file": "2025-secondary-machine-control-q01-answer-fig01.png"
+    },
+    {
+      "type": "answers",
+      "page": 11,
+      "box": [525, 350, 295, 335],
+      "file": "2025-secondary-machine-control-q02-answer-fig01.png"
+    },
+    {
+      "type": "machine-control",
+      "page": 7,
+      "box": [175, 190, 565, 335],
+      "file": "2025-secondary-machine-control-q03-fig01.png"
+    },
+    {
+      "type": "machine-control",
+      "page": 7,
+      "box": [130, 610, 635, 265],
+      "file": "2025-secondary-machine-control-q03-fig02.png"
+    },
+    {
+      "type": "answers",
+      "page": 12,
+      "box": [130, 215, 510, 220],
+      "file": "2025-secondary-machine-control-q03-answer-fig01.png"
+    },
+    {
+      "type": "machine-control",
+      "page": 8,
+      "box": [140, 335, 650, 190],
+      "file": "2025-secondary-machine-control-q04-fig01.png"
+    }
+  ]
+}

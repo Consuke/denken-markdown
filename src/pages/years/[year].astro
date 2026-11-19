@@ -1,0 +1,27 @@
+---
+import QuestionIndex from '../../components/QuestionIndex.astro';
+import { getVisibleQuestions, type Question } from '../../lib/questions';
+export async function getStaticPaths() {
+  const all = await getVisibleQuestions();
+  return [...new Set(all.map((entry) => entry.data.year))].map((year) => ({
+    params: { year: String(year) },
+    props: { year, questions: all.filter((entry) => entry.data.year === year) },
+  }));
+}
+interface Props {
+  year: number;
+  questions: Question[];
+}
+const { year, questions } = Astro.props;
+const title = `${year}年度の問題`;
+---
+
+<QuestionIndex
+  title={title}
+  description={`${year}年度の電験二種・二次試験の問題と解説。`}
+  questions={questions}
+  breadcrumbs={[
+    { label: '問題一覧', href: '/questions/' },
+    { label: `${year}年度` },
+  ]}
+/>

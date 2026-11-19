@@ -1,0 +1,8 @@
+node_modules
+dist
+dist-preview
+.astro
+package-lock.json
+playwright-report
+test-results
+src/content/questions

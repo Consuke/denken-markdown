@@ -1,0 +1,207 @@
+{
+  "year": 2023,
+  "questions": [
+    {
+      "subject": "power-management",
+      "q": 1,
+      "title": "負荷遮断時の水撃作用と設備対策",
+      "topics": ["hydro-generation"],
+      "questionPages": [3],
+      "answerPages": [1]
+    },
+    {
+      "subject": "power-management",
+      "q": 2,
+      "title": "多導体送電線の利点",
+      "topics": ["transmission"],
+      "questionPages": [4],
+      "answerPages": [1]
+    },
+    {
+      "subject": "power-management",
+      "q": 3,
+      "title": "等面積法による過渡安定性の計算",
+      "topics": ["stability"],
+      "questionPages": [5, 6],
+      "answerPages": [2, 3]
+    },
+    {
+      "subject": "power-management",
+      "q": 4,
+      "title": "配電線の電圧と分散型電源の連系",
+      "topics": ["transmission"],
+      "questionPages": [7],
+      "answerPages": [3, 4]
+    },
+    {
+      "subject": "power-management",
+      "q": 5,
+      "title": "中性点接地方式の目的と特性",
+      "topics": ["grounding"],
+      "questionPages": [8],
+      "answerPages": [4]
+    },
+    {
+      "subject": "power-management",
+      "q": 6,
+      "title": "電力系統の周波数制御と系統定数",
+      "topics": ["power-systems", "control"],
+      "questionPages": [9, 10],
+      "answerPages": [5]
+    },
+    {
+      "subject": "machine-control",
+      "q": 1,
+      "title": "同期発電機の励磁と定態安定極限電力",
+      "topics": ["rotating-machines", "stability"],
+      "questionPages": [3, 4],
+      "answerPages": [6, 7]
+    },
+    {
+      "subject": "machine-control",
+      "q": 2,
+      "title": "V結線変圧器の電圧と電力分担",
+      "topics": ["transformers"],
+      "questionPages": [5, 6],
+      "answerPages": [8, 9, 10, 11, 12]
+    },
+    {
+      "subject": "machine-control",
+      "q": 3,
+      "title": "電力用能動フィルタによる高調波除去",
+      "topics": ["harmonics"],
+      "questionPages": [7, 8],
+      "answerPages": [13, 14]
+    },
+    {
+      "subject": "machine-control",
+      "q": 4,
+      "title": "ゲイン特性曲線からの伝達関数の導出",
+      "topics": ["control"],
+      "questionPages": [9, 10],
+      "answerPages": [14, 15, 16, 17]
+    }
+  ],
+  "figures": [
+    {
+      "type": "power-management",
+      "page": 6,
+      "box": [140, 145, 685, 270],
+      "file": "2023-secondary-power-management-q03-fig01.png"
+    },
+    {
+      "type": "power-management",
+      "page": 6,
+      "box": [250, 440, 450, 315],
+      "file": "2023-secondary-power-management-q03-fig02.png"
+    },
+    {
+      "type": "power-management",
+      "page": 6,
+      "box": [250, 780, 450, 320],
+      "file": "2023-secondary-power-management-q03-fig03.png"
+    },
+    {
+      "type": "power-management",
+      "page": 7,
+      "box": [175, 380, 615, 240],
+      "file": "2023-secondary-power-management-q04-fig01.png"
+    },
+    {
+      "type": "power-management",
+      "page": 7,
+      "box": [175, 805, 615, 335],
+      "file": "2023-secondary-power-management-q04-fig02.png"
+    },
+    {
+      "type": "power-management",
+      "page": 9,
+      "box": [210, 610, 450, 270],
+      "file": "2023-secondary-power-management-q06-fig01.png"
+    },
+    {
+      "type": "machine-control",
+      "page": 3,
+      "box": [325, 670, 290, 275],
+      "file": "2023-secondary-machine-control-q01-fig01.png"
+    },
+    {
+      "type": "answers",
+      "page": 6,
+      "box": [280, 350, 460, 285],
+      "file": "2023-secondary-machine-control-q01-answer-fig01.png"
+    },
+    {
+      "type": "machine-control",
+      "page": 5,
+      "box": [160, 800, 605, 210],
+      "file": "2023-secondary-machine-control-q02-fig01.png"
+    },
+    {
+      "type": "machine-control",
+      "page": 6,
+      "box": [120, 135, 660, 255],
+      "file": "2023-secondary-machine-control-q02-fig02.png"
+    },
+    {
+      "type": "machine-control",
+      "page": 6,
+      "box": [295, 685, 350, 455],
+      "file": "2023-secondary-machine-control-q02-fig03.png"
+    },
+    {
+      "type": "answers",
+      "page": 8,
+      "box": [210, 585, 575, 485],
+      "file": "2023-secondary-machine-control-q02-answer-fig01.png"
+    },
+    {
+      "type": "machine-control",
+      "page": 8,
+      "box": [150, 150, 640, 330],
+      "file": "2023-secondary-machine-control-q03-fig01.png"
+    },
+    {
+      "type": "machine-control",
+      "page": 8,
+      "box": [230, 490, 475, 650],
+      "file": "2023-secondary-machine-control-q03-fig02.png"
+    },
+    {
+      "type": "answers",
+      "page": 13,
+      "box": [215, 390, 465, 740],
+      "file": "2023-secondary-machine-control-q03-answer-fig01.png"
+    },
+    {
+      "type": "machine-control",
+      "page": 10,
+      "box": [300, 215, 420, 200],
+      "file": "2023-secondary-machine-control-q04-fig01.png"
+    },
+    {
+      "type": "machine-control",
+      "page": 10,
+      "box": [305, 485, 415, 205],
+      "file": "2023-secondary-machine-control-q04-fig02.png"
+    },
+    {
+      "type": "machine-control",
+      "page": 10,
+      "box": [300, 725, 420, 240],
+      "file": "2023-secondary-machine-control-q04-fig03.png"
+    },
+    {
+      "type": "answers",
+      "page": 15,
+      "box": [255, 260, 520, 375],
+      "file": "2023-secondary-machine-control-q04-answer-fig01.png"
+    },
+    {
+      "type": "answers",
+      "page": 16,
+      "box": [250, 575, 545, 315],
+      "file": "2023-secondary-machine-control-q04-answer-fig02.png"
+    }
+  ]
+}

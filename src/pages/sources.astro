@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+---
+
+<BaseLayout
+  title="出典・利用条件"
+  description="公式資料の出典、独自解説、架空サンプルの扱いについて。"
+>
+  <article class="reading-width prose">
+    <Breadcrumbs items={[{ label: '出典・利用条件' }]} />
+    <h1>出典・利用条件</h1>
+    <h2>出典</h2>
+    <p>
+      各問題の「出典・更新情報」に資料名と公式一次資料へのリンクを掲載します。転記・省略・改変・図の再作成は注記し、当サイトの独自解説と区別します。
+    </p>
+    <h2>利用条件</h2>
+    <p>
+      実際の過去問は、転載・HTML化・図表改変などの利用条件を確認したうえで掲載します。本サイトは公式資料の利用許諾を示すものではありません。コピーした内容にも元資料の利用条件が適用されます。
+    </p>
+    <h2>サンプル</h2>
+    <p>
+      サンプル3件の問題・解答・解説・図は自作の架空例題です。年度・問番号は実在の試験と対応しません。
+    </p>
+    <p>
+      掲載内容や権利に関する連絡は<a href="/corrections/">訂正依頼</a>
+      からお願いします。
+    </p>
+  </article>
+</BaseLayout>

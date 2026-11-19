@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="260" viewBox="0 0 680 260" role="img" aria-labelledby="title desc">
+  <title id="title">架空例題：並行運転の簡略等価回路</title>
+  <desc id="desc">等しい起電力Eから、上側のインピーダンスZ1と下側のZ2を通じ、右側の共通負荷へ電流を供給する。</desc>
+  <rect width="680" height="260" rx="8" fill="#f3f7f7"/>
+  <g fill="none" stroke="#274e52" stroke-width="3"><path d="M130 75h100m100 0h150v130H330m-100 0H130V75m350 65h80"/><rect x="230" y="55" width="100" height="40"/><rect x="230" y="185" width="100" height="40"/><circle cx="130" cy="140" r="25" fill="#f3f7f7"/></g>
+  <g fill="#1c2d3d" font-family="sans-serif" font-size="19" text-anchor="middle"><text x="280" y="42">Z₁</text><text x="280" y="177">Z₂</text><text x="130" y="147">E</text><text x="397" y="64">I₁ →</text><text x="397" y="195">I₂ →</text><text x="580" y="146">負荷</text><text x="340" y="248" font-size="13">架空サンプル・自作の簡略図</text></g>
+</svg>

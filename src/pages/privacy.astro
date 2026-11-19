@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+---
+
+<BaseLayout
+  title="プライバシー"
+  description="アクセス解析、クリップボード、問い合わせ情報の扱いについて。"
+>
+  <article class="reading-width prose">
+    <Breadcrumbs items={[{ label: 'プライバシー' }]} />
+    <h1>プライバシー</h1>
+    <h2>アクセス解析・広告</h2>
+    <p>
+      アクセス解析タグ・広告タグは使用していません。ログインや学習履歴の保存も行いません。導入する場合は、このページを更新します。
+    </p>
+    <h2>クリップボード</h2>
+    <p>
+      コピーボタンを押したときだけ、対象の文章や数式を書き込みます。クリップボードの読み取りやコピー内容の外部送信は行いません。
+    </p>
+    <h2>通信と問い合わせ</h2>
+    <p>
+      ページの配信にはホスティング事業者、外部リンク先には各サイトの方針が適用されます。訂正依頼で受け取った情報は、内容の確認と返信に使用します。
+    </p>
+  </article>
+</BaseLayout>

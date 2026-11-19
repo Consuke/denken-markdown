@@ -1,0 +1,44 @@
+---
+import type { Question } from '../lib/questions';
+import { subjects, topics } from '../lib/taxonomy';
+interface Props {
+  questions: Question[];
+  emptyMessage?: string;
+  headingLevel?: 2 | 3;
+}
+const {
+  questions,
+  emptyMessage = '公開済みの問題はまだありません。',
+  headingLevel = 2,
+} = Astro.props;
+const Heading = headingLevel === 3 ? 'h3' : 'h2';
+---
+
+{questions.length ? (
+  <ol class="question-list">
+    {questions.map((question) => (
+      <li class="question-entry">
+        <p class="entry-meta">
+          <span>{question.data.year}年度</span>
+          <span>{subjects[question.data.subject].label}</span>
+          <span>
+            問{question.data.questionNumber}
+            {question.data.partNumber && ' (' + question.data.partNumber + ')'}
+          </span>
+        </p>
+        <Heading>
+          <a href={'/questions/' + question.id + '/'}>{question.data.title}</a>
+        </Heading>
+        <ul class="topic-links">
+          {question.data.topics.map((topic) => (
+            <li>
+              <a href={'/topics/' + topic + '/'}>{topics[topic].label}</a>
+            </li>
+          ))}
+        </ul>
+      </li>
+    ))}
+  </ol>
+) : (
+  <p class="empty-state">{emptyMessage}</p>
+)}

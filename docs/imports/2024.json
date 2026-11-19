@@ -1,0 +1,153 @@
+{
+  "year": 2024,
+  "questions": [
+    {
+      "subject": "power-management",
+      "q": 1,
+      "title": "復水装置と脱気器の役割",
+      "topics": ["thermal-generation"],
+      "questionPages": [3],
+      "answerPages": [1]
+    },
+    {
+      "subject": "power-management",
+      "q": 2,
+      "title": "油入変圧器の内部故障保護",
+      "topics": ["transformers", "protection"],
+      "questionPages": [4],
+      "answerPages": [1, 2]
+    },
+    {
+      "subject": "power-management",
+      "q": 3,
+      "title": "1線地絡時の通信線への電磁誘導",
+      "topics": ["electromagnetic-induction", "grounding"],
+      "questionPages": [5, 6],
+      "answerPages": [2]
+    },
+    {
+      "subject": "power-management",
+      "q": 4,
+      "title": "配電線ループ系統の電流と短絡電流",
+      "topics": ["transmission"],
+      "questionPages": [7, 8],
+      "answerPages": [3, 4]
+    },
+    {
+      "subject": "power-management",
+      "q": 5,
+      "title": "ガス絶縁開閉装置のSF6ガス管理",
+      "topics": ["switchgear", "insulation", "equipment-maintenance"],
+      "questionPages": [9],
+      "answerPages": [5]
+    },
+    {
+      "subject": "power-management",
+      "q": 6,
+      "title": "分散型電源の連系と電圧上昇対策",
+      "topics": ["photovoltaics", "power-systems"],
+      "questionPages": [10],
+      "answerPages": [6]
+    },
+    {
+      "subject": "machine-control",
+      "q": 1,
+      "title": "同期機の特性試験と短絡比",
+      "topics": ["rotating-machines"],
+      "questionPages": [3],
+      "answerPages": [7]
+    },
+    {
+      "subject": "machine-control",
+      "q": 2,
+      "title": "変圧器の試験と電圧変動率",
+      "topics": ["transformers"],
+      "questionPages": [4],
+      "answerPages": [8, 9]
+    },
+    {
+      "subject": "machine-control",
+      "q": 3,
+      "title": "降圧チョッパの波形と電流リプル",
+      "topics": ["dc-converters"],
+      "questionPages": [5, 6],
+      "answerPages": [10, 11]
+    },
+    {
+      "subject": "machine-control",
+      "q": 4,
+      "title": "制御系の直列・並列結合と時間応答",
+      "topics": ["control"],
+      "questionPages": [7, 8],
+      "answerPages": [12, 13, 14]
+    }
+  ],
+  "figures": [
+    {
+      "type": "power-management",
+      "page": 5,
+      "box": [175, 230, 605, 600],
+      "file": "2024-secondary-power-management-q03-fig01.png"
+    },
+    {
+      "type": "power-management",
+      "page": 7,
+      "box": [230, 630, 515, 335],
+      "file": "2024-secondary-power-management-q04-fig01.png"
+    },
+    {
+      "type": "power-management",
+      "page": 8,
+      "box": [190, 185, 640, 345],
+      "file": "2024-secondary-power-management-q04-fig02.png"
+    },
+    {
+      "type": "power-management",
+      "page": 8,
+      "box": [185, 795, 545, 390],
+      "file": "2024-secondary-power-management-q04-fig03.png"
+    },
+    {
+      "type": "machine-control",
+      "page": 3,
+      "box": [160, 840, 600, 300],
+      "file": "2024-secondary-machine-control-q01-fig01.png"
+    },
+    {
+      "type": "machine-control",
+      "page": 4,
+      "box": [150, 750, 265, 150],
+      "file": "2024-secondary-machine-control-q02-fig01.png"
+    },
+    {
+      "type": "machine-control",
+      "page": 5,
+      "box": [155, 755, 620, 290],
+      "file": "2024-secondary-machine-control-q03-fig01.png"
+    },
+    {
+      "type": "machine-control",
+      "page": 6,
+      "box": [155, 150, 670, 1005],
+      "file": "2024-secondary-machine-control-q03-fig02.png"
+    },
+    {
+      "type": "answers",
+      "page": 11,
+      "box": [150, 140, 660, 1005],
+      "file": "2024-secondary-machine-control-q03-answer-fig01.png"
+    },
+    {
+      "type": "machine-control",
+      "page": 8,
+      "box": [200, 150, 555, 130],
+      "file": "2024-secondary-machine-control-q04-fig01.png"
+    },
+    {
+      "type": "machine-control",
+      "page": 8,
+      "box": [225, 310, 515, 265],
+      "file": "2024-secondary-machine-control-q04-fig02.png"
+    }
+  ]
+}

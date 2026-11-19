@@ -1,0 +1,123 @@
+{
+  "year": 2021,
+  "questions": [
+    {
+      "subject": "power-management",
+      "q": 1,
+      "title": "火力発電所の大気汚染対策",
+      "topics": ["thermal-generation"],
+      "questionPages": [3],
+      "answerPages": [1, 2]
+    },
+    {
+      "subject": "power-management",
+      "q": 2,
+      "title": "変電所の雷サージ対策",
+      "topics": ["lightning", "insulation"],
+      "questionPages": [4],
+      "answerPages": [2]
+    },
+    {
+      "subject": "power-management",
+      "q": 3,
+      "title": "単位法による三相短絡電流と発電機容量",
+      "topics": ["power-systems", "protection"],
+      "questionPages": [5],
+      "answerPages": [2, 3]
+    },
+    {
+      "subject": "power-management",
+      "q": 4,
+      "title": "分散形電源の逆潮流と配電線電圧",
+      "topics": ["transmission", "power-systems"],
+      "questionPages": [6],
+      "answerPages": [3, 4]
+    },
+    {
+      "subject": "power-management",
+      "q": 5,
+      "title": "地中送電線の絶縁診断と事故点測定",
+      "topics": ["insulation", "equipment-maintenance"],
+      "questionPages": [7, 8],
+      "answerPages": [5]
+    },
+    {
+      "subject": "power-management",
+      "q": 6,
+      "title": "同期発電機の速度調定率と負荷分担",
+      "topics": ["power-systems", "parallel-operation"],
+      "questionPages": [9],
+      "answerPages": [5]
+    },
+    {
+      "subject": "machine-control",
+      "q": 1,
+      "title": "誘導電動機のトルクと最大トルク",
+      "topics": ["rotating-machines"],
+      "questionPages": [3],
+      "answerPages": [6, 7]
+    },
+    {
+      "subject": "machine-control",
+      "q": 2,
+      "title": "変圧器の短絡試験とリアクトル負荷",
+      "topics": ["transformers"],
+      "questionPages": [4],
+      "answerPages": [8, 9]
+    },
+    {
+      "subject": "machine-control",
+      "q": 3,
+      "title": "昇圧チョッパの動作と出力電圧",
+      "topics": ["dc-converters", "photovoltaics"],
+      "questionPages": [5],
+      "answerPages": [9, 10]
+    },
+    {
+      "subject": "machine-control",
+      "q": 4,
+      "title": "フィードバック制御系の応答と安定判別",
+      "topics": ["control", "feedback"],
+      "questionPages": [6],
+      "answerPages": [10, 11, 12]
+    }
+  ],
+  "figures": [
+    {
+      "type": "power-management",
+      "page": 5,
+      "box": [115, 865, 705, 290],
+      "file": "2021-secondary-power-management-q03-fig01.png"
+    },
+    {
+      "type": "power-management",
+      "page": 6,
+      "box": [130, 530, 690, 285],
+      "file": "2021-secondary-power-management-q04-fig01.png"
+    },
+    {
+      "type": "answers",
+      "page": 3,
+      "box": [180, 915, 625, 255],
+      "file": "2021-secondary-power-management-q04-answer-fig01.png"
+    },
+    {
+      "type": "machine-control",
+      "page": 3,
+      "box": [265, 460, 340, 200],
+      "file": "2021-secondary-machine-control-q01-fig01.png"
+    },
+    {
+      "type": "machine-control",
+      "page": 5,
+      "box": [265, 770, 495, 390],
+      "file": "2021-secondary-machine-control-q03-fig01.png"
+    },
+    {
+      "type": "machine-control",
+      "page": 6,
+      "box": [165, 245, 620, 315],
+      "file": "2021-secondary-machine-control-q04-fig01.png"
+    }
+  ]
+}

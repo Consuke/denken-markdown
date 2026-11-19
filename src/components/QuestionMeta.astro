@@ -1,0 +1,75 @@
+---
+import type { Question } from '../lib/questions';
+import { subjects, topics } from '../lib/taxonomy';
+interface Props {
+  question: Question;
+}
+const { data } = Astro.props.question;
+---
+
+<div class="question-meta">
+  <p class="meta-line">
+    <a href={'/years/' + data.year + '/'}>{data.year}年度</a>
+    <a href={'/subjects/' + data.subject + '/'}>
+      {subjects[data.subject].label}
+    </a>
+    <span>
+      問{data.questionNumber}
+      {data.partNumber && ' (' + data.partNumber + ')'}
+    </span>
+  </p>
+  <ul class="topic-links">
+    {data.topics.map((topic) => (
+      <li>
+        <a href={'/topics/' + topic + '/'}>{topics[topic].label}</a>
+      </li>
+    ))}
+  </ul>
+  {data.sample && (
+    <p class="sample-notice">架空のサンプルです。公式過去問ではありません。</p>
+  )}
+  <details class="source-details">
+    <summary>出典・更新情報</summary>
+    <dl class="source-meta">
+      <div>
+        <dt>出典</dt>
+        <dd>
+          {data.sample ? (
+            data.sourceName
+          ) : (
+            <a href={data.sourceUrl} target="_blank" rel="noopener noreferrer">
+              {data.sourceName}
+            </a>
+          )}
+        </dd>
+      </div>
+      {data.answerSourceUrl && !data.sample && (
+        <div>
+          <dt>公式解答</dt>
+          <dd>
+            <a
+              href={data.answerSourceUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              公式解答の資料
+            </a>
+          </dd>
+        </div>
+      )}
+      <div>
+        <dt>掲載日</dt>
+        <dd>
+          <time datetime={data.publishedAt}>{data.publishedAt}</time>
+        </dd>
+      </div>
+      <div>
+        <dt>更新日</dt>
+        <dd>
+          <time datetime={data.updatedAt}>{data.updatedAt}</time>
+        </dd>
+      </div>
+    </dl>
+    {data.sourceNote && <p>{data.sourceNote}</p>}
+  </details>
+</div>

@@ -1,0 +1,201 @@
+{
+  "year": 2017,
+  "questions": [
+    {
+      "subject": "power-management",
+      "q": 1,
+      "title": "コンバインドサイクル発電の出力と大気温度",
+      "topics": ["thermal-generation"],
+      "questionPages": [3],
+      "answerPages": [1]
+    },
+    {
+      "subject": "power-management",
+      "q": 2,
+      "title": "過渡安定度の向上対策",
+      "topics": ["stability", "power-systems"],
+      "questionPages": [4],
+      "answerPages": [2, 3]
+    },
+    {
+      "subject": "power-management",
+      "q": 3,
+      "title": "短絡容量とコンデンサ投入時の電圧変動",
+      "topics": ["power-systems", "transformers"],
+      "questionPages": [5, 6],
+      "answerPages": [4, 5]
+    },
+    {
+      "subject": "power-management",
+      "q": 4,
+      "title": "配電線のループ電流",
+      "topics": ["transmission"],
+      "questionPages": [7, 8],
+      "answerPages": [6, 7]
+    },
+    {
+      "subject": "power-management",
+      "q": 5,
+      "title": "高圧配電系統の中性点非接地方式",
+      "topics": ["grounding", "transmission"],
+      "questionPages": [9],
+      "answerPages": [8]
+    },
+    {
+      "subject": "power-management",
+      "q": 6,
+      "title": "変電所の定期点検とGISの設備診断",
+      "topics": ["equipment-maintenance", "switchgear"],
+      "questionPages": [10],
+      "answerPages": [9, 10]
+    },
+    {
+      "subject": "machine-control",
+      "q": 1,
+      "title": "同期発電機の電圧変動率と短絡比",
+      "topics": ["rotating-machines"],
+      "questionPages": [3],
+      "answerPages": [11, 12]
+    },
+    {
+      "subject": "machine-control",
+      "q": 2,
+      "title": "単巻変圧器の巻数比と自己容量",
+      "topics": ["transformers"],
+      "questionPages": [4],
+      "answerPages": [13, 14]
+    },
+    {
+      "subject": "machine-control",
+      "q": 3,
+      "title": "単相ダイオード整流回路",
+      "topics": ["rectifiers"],
+      "questionPages": [5, 6],
+      "answerPages": [15, 16]
+    },
+    {
+      "subject": "machine-control",
+      "q": 4,
+      "title": "RLC直列回路の伝達関数",
+      "topics": ["control"],
+      "questionPages": [7],
+      "answerPages": [17, 18, 19, 20]
+    }
+  ],
+  "figures": [
+    {
+      "type": "power-management",
+      "page": 5,
+      "box": [140, 335, 660, 550],
+      "file": "2017-secondary-power-management-q03-fig01.png"
+    },
+    {
+      "type": "power-management",
+      "page": 8,
+      "box": [160, 165, 645, 420],
+      "file": "2017-secondary-power-management-q04-fig01.png"
+    },
+    {
+      "type": "machine-control",
+      "page": 3,
+      "box": [140, 965, 650, 220],
+      "file": "2017-secondary-machine-control-q01-fig01.png"
+    },
+    {
+      "type": "machine-control",
+      "page": 4,
+      "box": [310, 525, 300, 210],
+      "file": "2017-secondary-machine-control-q02-fig01.png"
+    },
+    {
+      "type": "machine-control",
+      "page": 5,
+      "box": [320, 675, 325, 300],
+      "file": "2017-secondary-machine-control-q03-fig01.png"
+    },
+    {
+      "type": "machine-control",
+      "page": 6,
+      "box": [325, 150, 325, 300],
+      "file": "2017-secondary-machine-control-q03-fig02.png"
+    },
+    {
+      "type": "machine-control",
+      "page": 6,
+      "box": [325, 545, 325, 310],
+      "file": "2017-secondary-machine-control-q03-fig03.png"
+    },
+    {
+      "type": "machine-control",
+      "page": 7,
+      "box": [265, 230, 410, 200],
+      "file": "2017-secondary-machine-control-q04-fig01.png"
+    },
+    {
+      "type": "machine-control",
+      "page": 7,
+      "box": [305, 558, 335, 120],
+      "file": "2017-secondary-machine-control-q04-fig02.png"
+    },
+    {
+      "type": "answers",
+      "page": 4,
+      "box": [200, 220, 565, 490],
+      "file": "2017-secondary-power-management-q03-answer-fig01.png"
+    },
+    {
+      "type": "answers",
+      "page": 6,
+      "box": [185, 575, 620, 420],
+      "file": "2017-secondary-power-management-q04-answer-fig01.png"
+    },
+    {
+      "type": "answers",
+      "page": 17,
+      "box": [315, 450, 405, 110],
+      "file": "2017-secondary-machine-control-q04-answer-fig01.png"
+    },
+    {
+      "type": "answers",
+      "page": 18,
+      "box": [160, 155, 500, 210],
+      "file": "2017-secondary-machine-control-q04-answer-fig02.png"
+    },
+    {
+      "type": "answers",
+      "page": 18,
+      "box": [220, 410, 420, 165],
+      "file": "2017-secondary-machine-control-q04-answer-fig03.png"
+    },
+    {
+      "type": "answers",
+      "page": 18,
+      "box": [175, 635, 635, 215],
+      "file": "2017-secondary-machine-control-q04-answer-fig04.png"
+    },
+    {
+      "type": "answers",
+      "page": 18,
+      "box": [175, 900, 635, 190],
+      "file": "2017-secondary-machine-control-q04-answer-fig05.png"
+    },
+    {
+      "type": "answers",
+      "page": 19,
+      "box": [255, 210, 460, 118],
+      "file": "2017-secondary-machine-control-q04-answer-fig06.png"
+    },
+    {
+      "type": "answers",
+      "page": 19,
+      "box": [275, 377, 400, 95],
+      "file": "2017-secondary-machine-control-q04-answer-fig07.png"
+    },
+    {
+      "type": "answers",
+      "page": 19,
+      "box": [295, 548, 450, 123],
+      "file": "2017-secondary-machine-control-q04-answer-fig08.png"
+    }
+  ]
+}

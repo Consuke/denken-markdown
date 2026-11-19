@@ -1,0 +1,12 @@
+---
+import QuestionIndex from '../../components/QuestionIndex.astro';
+import { getVisibleQuestions } from '../../lib/questions';
+const questions = await getVisibleQuestions();
+---
+
+<QuestionIndex
+  title="問題一覧"
+  description="電験二種・二次試験の問題一覧。年度・科目・分野別に問題と解説を掲載しています。"
+  questions={questions}
+  breadcrumbs={[{ label: '問題一覧' }]}
+/>

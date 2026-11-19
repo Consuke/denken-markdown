@@ -1,0 +1,123 @@
+{
+  "year": 2022,
+  "questions": [
+    {
+      "subject": "power-management",
+      "q": 1,
+      "title": "調整池式水力発電所のピーク運用",
+      "topics": ["hydro-generation"],
+      "questionPages": [3],
+      "answerPages": [1]
+    },
+    {
+      "subject": "power-management",
+      "q": 2,
+      "title": "酸化亜鉛形避雷器の保護特性",
+      "topics": ["lightning", "insulation"],
+      "questionPages": [4],
+      "answerPages": [1, 2]
+    },
+    {
+      "subject": "power-management",
+      "q": 3,
+      "title": "受電電圧を維持する調相設備",
+      "topics": ["power-systems"],
+      "questionPages": [5],
+      "answerPages": [2, 3, 4, 5]
+    },
+    {
+      "subject": "power-management",
+      "q": 4,
+      "title": "高圧受電設備の遮断と地絡保護",
+      "topics": ["protection", "switchgear"],
+      "questionPages": [6],
+      "answerPages": [5]
+    },
+    {
+      "subject": "power-management",
+      "q": 5,
+      "title": "再生可能エネルギー導入と系統の課題",
+      "topics": ["power-systems", "photovoltaics", "wind-generation"],
+      "questionPages": [7],
+      "answerPages": [6]
+    },
+    {
+      "subject": "power-management",
+      "q": 6,
+      "title": "需要設備の最大電力と総合負荷率",
+      "topics": ["load-characteristics"],
+      "questionPages": [8],
+      "answerPages": [6, 7]
+    },
+    {
+      "subject": "machine-control",
+      "q": 1,
+      "title": "同期発電機の短絡比と電圧変動率",
+      "topics": ["rotating-machines"],
+      "questionPages": [3],
+      "answerPages": [8, 9]
+    },
+    {
+      "subject": "machine-control",
+      "q": 2,
+      "title": "誘導電動機の等価回路と入力力率",
+      "topics": ["rotating-machines"],
+      "questionPages": [4],
+      "answerPages": [9, 10]
+    },
+    {
+      "subject": "machine-control",
+      "q": 3,
+      "title": "三相整流器とPWMインバータによる電動機駆動",
+      "topics": ["rectifiers", "inverters"],
+      "questionPages": [5, 6],
+      "answerPages": [10, 11]
+    },
+    {
+      "subject": "machine-control",
+      "q": 4,
+      "title": "制御系の安定性と定常偏差",
+      "topics": ["control", "feedback"],
+      "questionPages": [7],
+      "answerPages": [11, 12, 13, 14]
+    }
+  ],
+  "figures": [
+    {
+      "type": "power-management",
+      "page": 3,
+      "box": [170, 650, 605, 430],
+      "file": "2022-secondary-power-management-q01-fig01.png"
+    },
+    {
+      "type": "power-management",
+      "page": 5,
+      "box": [135, 540, 720, 290],
+      "file": "2022-secondary-power-management-q03-fig01.png"
+    },
+    {
+      "type": "machine-control",
+      "page": 6,
+      "box": [160, 160, 565, 270],
+      "file": "2022-secondary-machine-control-q03-fig01.png"
+    },
+    {
+      "type": "machine-control",
+      "page": 6,
+      "box": [215, 490, 475, 230],
+      "file": "2022-secondary-machine-control-q03-fig02.png"
+    },
+    {
+      "type": "answers",
+      "page": 11,
+      "box": [200, 230, 605, 190],
+      "file": "2022-secondary-machine-control-q03-answer-fig01.png"
+    },
+    {
+      "type": "machine-control",
+      "page": 7,
+      "box": [180, 630, 535, 165],
+      "file": "2022-secondary-machine-control-q04-fig01.png"
+    }
+  ]
+}

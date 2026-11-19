@@ -1,0 +1,31 @@
+---
+import QuestionIndex from '../../components/QuestionIndex.astro';
+import { getVisibleQuestions, type Question } from '../../lib/questions';
+import { subjects, subjectSlugs, type Subject } from '../../lib/taxonomy';
+export async function getStaticPaths() {
+  const all = await getVisibleQuestions();
+  return subjectSlugs.map((subject) => ({
+    params: { subject },
+    props: {
+      subject,
+      questions: all.filter((entry) => entry.data.subject === subject),
+    },
+  }));
+}
+interface Props {
+  subject: Subject;
+  questions: Question[];
+}
+const { subject, questions } = Astro.props;
+const title = `${subjects[subject].label}の問題`;
+---
+
+<QuestionIndex
+  title={title}
+  description={subjects[subject].description}
+  questions={questions}
+  breadcrumbs={[
+    { label: '問題一覧', href: '/questions/' },
+    { label: subjects[subject].label },
+  ]}
+/>

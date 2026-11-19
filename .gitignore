@@ -1,0 +1,11 @@
+node_modules/
+dist/
+dist-preview/
+.astro/
+.env
+.env.*
+!.env.example
+playwright-report/
+test-results/
+.DS_Store
+Thumbs.db

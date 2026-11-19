@@ -1,0 +1,18 @@
+---
+import CopyButton from './CopyButton.astro';
+---
+
+<details class="answer-disclosure" id="answer">
+  <summary>
+    <h2>
+      解答<span class="when-closed">を表示</span>
+      <span class="when-open">を閉じる</span>
+    </h2>
+  </summary>
+  <div class="answer-body">
+    <CopyButton section="answer" label="解答のMarkdownをコピー" />
+    <div class="prose">
+      <slot />
+    </div>
+  </div>
+</details>

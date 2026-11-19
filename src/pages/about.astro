@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+---
+
+<BaseLayout
+  title="このサイトについて"
+  description="電験二種の過去問・解説サイトの掲載方針と使い方。"
+>
+  <div class="reading-width prose">
+    <Breadcrumbs items={[{ label: 'このサイトについて' }]} />
+    <h1>このサイトについて</h1>
+    <p>
+      電験二種の二次試験の問題と解説を掲載する非公式サイトです。試験実施団体による運営ではありません。
+    </p>
+    <h2>使い方</h2>
+    <ul>
+      <li>科目・年度・分野から問題を選べます。</li>
+      <li>解答は閉じた状態で表示します。「解答を表示」で開けます。</li>
+      <li>問題文と解答はMarkdown、数式はLaTeXでコピーできます。</li>
+    </ul>
+    <p>
+      独自解説は当サイトが作成しています。架空サンプルは実在の過去問ではありません。
+    </p>
+    <p>
+      <a href="/sources/">出典・利用条件</a> ·{' '}
+      <a href="/corrections/">訂正依頼</a>
+    </p>
+  </div>
+</BaseLayout>

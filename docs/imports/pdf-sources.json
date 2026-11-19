@@ -1,0 +1,238 @@
+{
+  "directory": "C:/Users/yj-ma/Downloads/電験過去問PDF",
+  "checkedAt": "2026-11-18",
+  "documents": [
+    {
+      "year": 2017,
+      "type": "machine-control",
+      "filename": "電験二種_二次試験_2017_機械制御.pdf",
+      "sha256": "c13b93e00488f9f2648dd5191d89bbeb539deacf033e0407aae81f3856c679a8",
+      "pageCount": 7,
+      "sourceUrl": "https://www.shiken.or.jp/chief/upload/20171119_ch_second_q02.pdf"
+    },
+    {
+      "year": 2017,
+      "type": "answers",
+      "filename": "電験二種_二次試験_2017_解答.pdf",
+      "sha256": "fea0f991321937dc3880a46fdb2f91a029bc314773fd97fdbc6403121aa375a4",
+      "pageCount": 20,
+      "sourceUrl": "https://www.shiken.or.jp/chief/upload/20171119_ch_second_a01.pdf"
+    },
+    {
+      "year": 2017,
+      "type": "power-management",
+      "filename": "電験二種_二次試験_2017_電力管理.pdf",
+      "sha256": "5f4aea029908d552d1fce2c572a129be7d12ac497b7f9b2a3db7aff59b90694a",
+      "pageCount": 10,
+      "sourceUrl": "https://www.shiken.or.jp/chief/upload/20171119_ch_second_q01.pdf"
+    },
+    {
+      "year": 2018,
+      "type": "machine-control",
+      "filename": "電験二種_二次試験_2018_機械制御.pdf",
+      "sha256": "fd49e7e855d9867d299a8d369f199c082316d584aca27a897deccdd3c6553d55",
+      "pageCount": 8,
+      "sourceUrl": "https://www.shiken.or.jp/chief/upload/20181118_ch_second_q02.pdf"
+    },
+    {
+      "year": 2018,
+      "type": "answers",
+      "filename": "電験二種_二次試験_2018_解答.pdf",
+      "sha256": "431a272a08f7b60b464551fa10920266d83c17adfce15f564c3dc4e097bea71a",
+      "pageCount": 17,
+      "sourceUrl": "https://www.shiken.or.jp/chief/upload/20181118_ch_second_a01.pdf"
+    },
+    {
+      "year": 2018,
+      "type": "power-management",
+      "filename": "電験二種_二次試験_2018_電力管理.pdf",
+      "sha256": "cc88e2b64d03e34bca64fb817c93a6e44ce576f1cb81ffcbbe410f8e0017c77d",
+      "pageCount": 9,
+      "sourceUrl": "https://www.shiken.or.jp/chief/upload/20181118_ch_second_q01.pdf"
+    },
+    {
+      "year": 2019,
+      "type": "machine-control",
+      "filename": "電験二種_二次試験_2019_機械制御.pdf",
+      "sha256": "f29c02398c5fdbe121ceb206432eaf5822c1178de86612312b7bf990456bf5dd",
+      "pageCount": 6,
+      "sourceUrl": "https://www.shiken.or.jp/chief/upload/20191117_ch_second_q02.pdf"
+    },
+    {
+      "year": 2019,
+      "type": "answers",
+      "filename": "電験二種_二次試験_2019_解答.pdf",
+      "sha256": "e4974e12b3ffd53e997d896a69bdbcf27146e684f429683f5a988b950bdb8c43",
+      "pageCount": 17,
+      "sourceUrl": "https://www.shiken.or.jp/chief/upload/20191117_ch_second_a01.pdf"
+    },
+    {
+      "year": 2019,
+      "type": "power-management",
+      "filename": "電験二種_二次試験_2019_電力管理.pdf",
+      "sha256": "fc76dab063396eb46d529e9d3ccbaffb1c696654eb4617f553af385ff0e00929",
+      "pageCount": 11,
+      "sourceUrl": "https://www.shiken.or.jp/chief/upload/20191117_ch_second_q01.pdf"
+    },
+    {
+      "year": 2020,
+      "type": "machine-control",
+      "filename": "電験二種_二次試験_2020_機械制御.pdf",
+      "sha256": "9e0a66ab814068a89026ebb3fde7fe22a78948619326c8bb731fbb21d52576e7",
+      "pageCount": 7,
+      "sourceUrl": "https://www.shiken.or.jp/chief/upload/20201122_ch_second_q02.pdf"
+    },
+    {
+      "year": 2020,
+      "type": "answers",
+      "filename": "電験二種_二次試験_2020_解答.pdf",
+      "sha256": "184781037f0e63f22cbdcf16b6780e76629afe25ea45121407d7e6fbf3ff858f",
+      "pageCount": 17,
+      "sourceUrl": "https://www.shiken.or.jp/chief/upload/20201122_ch_second_a01.pdf"
+    },
+    {
+      "year": 2020,
+      "type": "power-management",
+      "filename": "電験二種_二次試験_2020_電力管理.pdf",
+      "sha256": "51e6e0edd99aefcfbfeb3e541fae132d15c9eaeddbf9d702fa0f20868427dca3",
+      "pageCount": 10,
+      "sourceUrl": "https://www.shiken.or.jp/chief/upload/20201122_ch_second_q01.pdf"
+    },
+    {
+      "year": 2021,
+      "type": "machine-control",
+      "filename": "電験二種_二次試験_2021_機械制御.pdf",
+      "sha256": "b3f8574b523a32974f0c9d655cd5b0540201c40e5dd38e3c04435e64df3aa5db",
+      "pageCount": 6,
+      "sourceUrl": "https://www.shiken.or.jp/chief/upload/20211114_ch_second_q02.pdf"
+    },
+    {
+      "year": 2021,
+      "type": "answers",
+      "filename": "電験二種_二次試験_2021_解答.pdf",
+      "sha256": "ea62237df5973f26d6981b229354f0f6fb10a3a88ce7a4e85a6169ebd6623335",
+      "pageCount": 12,
+      "sourceUrl": "https://www.shiken.or.jp/chief/upload/20211114_ch_second_a01.pdf"
+    },
+    {
+      "year": 2021,
+      "type": "power-management",
+      "filename": "電験二種_二次試験_2021_電力管理.pdf",
+      "sha256": "3a1a891f686ac46139fdb859d18df033728fb4582880f423a8334f045ee5e909",
+      "pageCount": 9,
+      "sourceUrl": "https://www.shiken.or.jp/chief/upload/20211114_ch_second_q01.pdf"
+    },
+    {
+      "year": 2022,
+      "type": "machine-control",
+      "filename": "電験二種_二次試験_2022_機械制御.pdf",
+      "sha256": "ed82e22debd39e04495f72ab13e56b6fa2defa4358c407b8ce0616080d6c7e7e",
+      "pageCount": 7,
+      "sourceUrl": "https://www.shiken.or.jp/chief/upload/20221113_ch_second_q02.pdf"
+    },
+    {
+      "year": 2022,
+      "type": "answers",
+      "filename": "電験二種_二次試験_2022_解答.pdf",
+      "sha256": "04548886a0f2545cf8a6099a044539d1b6530b633500ddacbde4b653a2782324",
+      "pageCount": 14,
+      "sourceUrl": "https://www.shiken.or.jp/chief/upload/20221113_ch_second_a01.pdf"
+    },
+    {
+      "year": 2022,
+      "type": "power-management",
+      "filename": "電験二種_二次試験_2022_電力管理.pdf",
+      "sha256": "81c21f2963e361fe25c08a822afeb9cdda3530aad6397eb1859056af4dff3826",
+      "pageCount": 8,
+      "sourceUrl": "https://www.shiken.or.jp/chief/upload/20221113_ch_second_q01.pdf"
+    },
+    {
+      "year": 2023,
+      "type": "machine-control",
+      "filename": "電験二種_二次試験_2023_機械制御.pdf",
+      "sha256": "2609fd4c8222a28ebbeb2118844be7d9c96b2bd61fa64e4f878c5ff3b8a15ae8",
+      "pageCount": 10,
+      "sourceUrl": "https://www.shiken.or.jp/chief/upload/20231112_ch_second_q02.pdf"
+    },
+    {
+      "year": 2023,
+      "type": "answers",
+      "filename": "電験二種_二次試験_2023_解答.pdf",
+      "sha256": "667a290ae512548856761faee07681e042507a89eb3911a5004649924fff7319",
+      "pageCount": 17,
+      "sourceUrl": "https://www.shiken.or.jp/chief/upload/20231112_ch_second_a01.pdf"
+    },
+    {
+      "year": 2023,
+      "type": "power-management",
+      "filename": "電験二種_二次試験_2023_電力管理.pdf",
+      "sha256": "779942e46a6cb23024a81b678ff275064e02b712482814e3d3d9f0ab5d3b5896",
+      "pageCount": 10,
+      "sourceUrl": "https://www.shiken.or.jp/chief/upload/20231112_ch_second_q01.pdf"
+    },
+    {
+      "year": 2024,
+      "type": "machine-control",
+      "filename": "電験二種_二次試験_2024_機械制御.pdf",
+      "sha256": "e753df68e0492fff7b0adef043957c8363f00a4f1b8cd5e59886a80c1470fd69",
+      "pageCount": 8,
+      "sourceUrl": "https://www.shiken.or.jp/chief/upload/20241110_as_02_ch_second_q02.pdf"
+    },
+    {
+      "year": 2024,
+      "type": "answers",
+      "filename": "電験二種_二次試験_2024_解答.pdf",
+      "sha256": "ec35151ff401889cb4b4c17fce21b85d466923c32595786d9723a6c9bd977906",
+      "pageCount": 14,
+      "sourceUrl": "https://www.shiken.or.jp/chief/upload/20241110_ch_second_a01_tk.pdf"
+    },
+    {
+      "year": 2024,
+      "type": "power-management",
+      "filename": "電験二種_二次試験_2024_電力管理.pdf",
+      "sha256": "c40ff2a55d9249d9b7b763e19c8918260adc7b5e362e373186e6d6346a112a6f",
+      "pageCount": 10,
+      "sourceUrl": "https://www.shiken.or.jp/chief/upload/20241110_as_02_ch_second_q01.pdf"
+    },
+    {
+      "year": 2025,
+      "type": "machine-control",
+      "filename": "電験二種_二次試験_2025_機械制御.pdf",
+      "sha256": "7f881a1fa861b4b7d0fb83799bfe7a06d5a2bb1c713552c2b2b80206f98b2ba2",
+      "pageCount": 8,
+      "sourceUrl": "https://www.shiken.or.jp/chief/upload/20251116_ch_second_q02.pdf"
+    },
+    {
+      "year": 2025,
+      "type": "answers",
+      "filename": "電験二種_二次試験_2025_解答.pdf",
+      "sha256": "25e98f20db905f395b096c45abb8dc557b7f4533717d0e289012aa77048841df",
+      "pageCount": 16,
+      "sourceUrl": "https://www.shiken.or.jp/chief/upload/20251116_ch_second_a01_tk.pdf"
+    },
+    {
+      "year": 2025,
+      "type": "power-management",
+      "filename": "電験二種_二次試験_2025_電力管理.pdf",
+      "sha256": "b35d4eb94e3b7024761c72d9af58108f0e9bfa6160f9e659c0b50bed8a0bdaad",
+      "pageCount": 11,
+      "sourceUrl": "https://www.shiken.or.jp/chief/upload/20251116_ch_second_q01.pdf"
+    },
+    {
+      "year": 2026,
+      "type": "machine-control",
+      "filename": "電験二種_二次試験_2026_機械制御.pdf",
+      "sha256": "513d7f3cd05b1e5185e9d6af0c090f9bb493380056d0d1fc7f139c6ec8f0d43e",
+      "pageCount": 8,
+      "sourceUrl": "https://www.shiken.or.jp/chief/upload/20261115_ch_second_q02.pdf"
+    },
+    {
+      "year": 2026,
+      "type": "power-management",
+      "filename": "電験二種_二次試験_2026_電力管理.pdf",
+      "sha256": "4905e74393c2efd157c8e45bdb930726fbce57712350777ffaa9988a25cb000c",
+      "pageCount": 9,
+      "sourceUrl": "https://www.shiken.or.jp/chief/upload/20261115_ch_second_q01.pdf"
+    }
+  ]
+}

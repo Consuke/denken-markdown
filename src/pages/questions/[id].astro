@@ -1,0 +1,125 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import QuestionMeta from '../../components/QuestionMeta.astro';
+import CopyButton from '../../components/CopyButton.astro';
+import AnswerDisclosure from '../../components/AnswerDisclosure.astro';
+import { getVisibleQuestions, type Question } from '../../lib/questions';
+import { extractSections } from '../../lib/markdown-export';
+import { renderSection } from '../../lib/render-section';
+import { safeJson } from '../../lib/safe-json';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import QuestionList from '../../components/QuestionList.astro';
+import { questionDescription, relatedQuestions } from '../../lib/question-info';
+
+export async function getStaticPaths() {
+  return (await getVisibleQuestions()).map((question) => ({
+    params: { id: question.id },
+    props: { question },
+  }));
+}
+interface Props {
+  question: Question;
+}
+const { question } = Astro.props;
+const sections = extractSections(question.body ?? '');
+const [questionHtml, answerHtml, explanationHtml, knowledgeHtml] =
+  await Promise.all([
+    renderSection(sections.question),
+    sections.answer ? renderSection(sections.answer) : Promise.resolve(''),
+    sections.explanation
+      ? renderSection(sections.explanation)
+      : Promise.resolve(''),
+    sections.knowledge
+      ? renderSection(sections.knowledge)
+      : Promise.resolve(''),
+  ]);
+const payload = safeJson({
+  question: sections.question.markdown,
+  ...(sections.answer ? { answer: sections.answer.markdown } : {}),
+});
+const related = relatedQuestions(question, await getVisibleQuestions());
+---
+
+<BaseLayout
+  title={question.data.title}
+  description={questionDescription(question.data)}
+>
+  <Breadcrumbs
+    items={[
+      { label: '問題一覧', href: '/questions/' },
+      {
+        label: `${question.data.year}年度`,
+        href: `/years/${question.data.year}/`,
+      },
+      {
+        label:
+          '問' +
+          question.data.questionNumber +
+          (question.data.partNumber
+            ? ' (' + question.data.partNumber + ')'
+            : ''),
+      },
+    ]}
+  />
+  <article class="reading-width">
+    <header class="question-heading">
+      <h1>{question.data.title}</h1>
+      <QuestionMeta question={question} />
+    </header>
+    <noscript>
+      <p class="notice">
+        コピー機能にはJavaScriptが必要です。本文はそのまま閲覧できます。
+      </p>
+    </noscript>
+    <section aria-labelledby="question-title" id="question">
+      <div class="section-heading">
+        <h2 id="question-title">問題</h2>
+        <CopyButton section="question" label="問題文のMarkdownをコピー" />
+      </div>
+      <div class="prose" set:html={questionHtml} />
+    </section>
+    {sections.answer && (
+      <AnswerDisclosure>
+        <Fragment set:html={answerHtml} />
+      </AnswerDisclosure>
+    )}
+    {sections.explanation && (
+      <section
+        aria-labelledby="explanation-title"
+        class="explanation"
+        id="explanation"
+      >
+        <h2 id="explanation-title">独自解説</h2>
+        <div class="prose" set:html={explanationHtml} />
+      </section>
+    )}
+    {knowledgeHtml && (
+      <section aria-labelledby="knowledge-title">
+        <h2 id="knowledge-title">関連知識</h2>
+        <div class="prose" set:html={knowledgeHtml} />
+      </section>
+    )}
+    {related.length > 0 && (
+      <section aria-labelledby="related-title">
+        <h2 id="related-title">同じ分野の問題</h2>
+        <QuestionList questions={related} headingLevel={3} />
+      </section>
+    )}
+    <p class="correction-link">
+      <a href={`/corrections/?question=${question.id}`}>訂正を依頼する</a>
+    </p>
+  </article>
+  <p
+    id="copy-status"
+    class="copy-status"
+    role="status"
+    aria-live="polite"
+    aria-atomic="true"
+  ></p>
+  <script
+    is:inline
+    type="application/json"
+    id="copy-sources"
+    set:html={payload}
+  />
+</BaseLayout>

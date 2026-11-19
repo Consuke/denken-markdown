@@ -1,0 +1,159 @@
+{
+  "year": 2019,
+  "questions": [
+    {
+      "subject": "power-management",
+      "q": 1,
+      "title": "火力発電所の非常用補機電源",
+      "topics": ["thermal-generation"],
+      "questionPages": [3],
+      "answerPages": [1]
+    },
+    {
+      "subject": "power-management",
+      "q": 2,
+      "title": "送受電端電圧と有効・無効電力",
+      "topics": ["transmission"],
+      "questionPages": [4],
+      "answerPages": [1, 2]
+    },
+    {
+      "subject": "power-management",
+      "q": 3,
+      "title": "等面積法と過渡安定性",
+      "topics": ["stability", "power-systems"],
+      "questionPages": [5, 6],
+      "answerPages": [3]
+    },
+    {
+      "subject": "power-management",
+      "q": 4,
+      "title": "負荷分布と低圧配電線の電力損失",
+      "topics": ["transmission"],
+      "questionPages": [7, 8],
+      "answerPages": [4, 5, 6]
+    },
+    {
+      "subject": "power-management",
+      "q": 5,
+      "title": "無効電力による電圧変動と分路リアクトル",
+      "topics": ["power-systems"],
+      "questionPages": [9, 10],
+      "answerPages": [7, 8, 9]
+    },
+    {
+      "subject": "power-management",
+      "q": 6,
+      "title": "発電用風力設備の保安と雷保護",
+      "topics": ["wind-generation", "equipment-maintenance"],
+      "questionPages": [11],
+      "answerPages": [10]
+    },
+    {
+      "subject": "machine-control",
+      "q": 1,
+      "title": "誘導電動機の滑りと効率",
+      "topics": ["rotating-machines"],
+      "questionPages": [3],
+      "answerPages": [11]
+    },
+    {
+      "subject": "machine-control",
+      "q": 2,
+      "title": "変圧器の並行運転と最大効率",
+      "topics": ["transformers", "parallel-operation"],
+      "questionPages": [4],
+      "answerPages": [11, 12, 13]
+    },
+    {
+      "subject": "machine-control",
+      "q": 3,
+      "title": "太陽光発電用電力変換器",
+      "topics": ["photovoltaics", "inverters"],
+      "questionPages": [5],
+      "answerPages": [13, 14]
+    },
+    {
+      "subject": "machine-control",
+      "q": 4,
+      "title": "フィードバック系の特性根とインパルス応答",
+      "topics": ["control", "feedback"],
+      "questionPages": [6],
+      "answerPages": [14, 15, 16, 17]
+    }
+  ],
+  "figures": [
+    {
+      "type": "power-management",
+      "page": 4,
+      "box": [235, 650, 480, 155],
+      "file": "2019-secondary-power-management-q02-fig01.png"
+    },
+    {
+      "type": "power-management",
+      "page": 6,
+      "box": [135, 140, 690, 190],
+      "file": "2019-secondary-power-management-q03-fig01.png"
+    },
+    {
+      "type": "power-management",
+      "page": 6,
+      "box": [185, 390, 590, 445],
+      "file": "2019-secondary-power-management-q03-fig02.png"
+    },
+    {
+      "type": "power-management",
+      "page": 6,
+      "box": [135, 870, 690, 180],
+      "file": "2019-secondary-power-management-q03-fig03.png"
+    },
+    {
+      "type": "power-management",
+      "page": 8,
+      "box": [145, 150, 685, 490],
+      "file": "2019-secondary-power-management-q04-fig01.png"
+    },
+    {
+      "type": "power-management",
+      "page": 8,
+      "box": [145, 665, 685, 475],
+      "file": "2019-secondary-power-management-q04-fig02.png"
+    },
+    {
+      "type": "power-management",
+      "page": 9,
+      "box": [230, 685, 475, 185],
+      "file": "2019-secondary-power-management-q05-fig01.png"
+    },
+    {
+      "type": "power-management",
+      "page": 10,
+      "box": [175, 585, 600, 355],
+      "file": "2019-secondary-power-management-q05-fig02.png"
+    },
+    {
+      "type": "answers",
+      "page": 5,
+      "box": [120, 225, 700, 425],
+      "file": "2019-secondary-power-management-q04-answer-fig01.png"
+    },
+    {
+      "type": "answers",
+      "page": 7,
+      "box": [290, 290, 450, 200],
+      "file": "2019-secondary-power-management-q05-answer-fig01.png"
+    },
+    {
+      "type": "machine-control",
+      "page": 5,
+      "box": [140, 765, 660, 325],
+      "file": "2019-secondary-machine-control-q03-fig01.png"
+    },
+    {
+      "type": "machine-control",
+      "page": 6,
+      "box": [200, 390, 570, 190],
+      "file": "2019-secondary-machine-control-q04-fig01.png"
+    }
+  ]
+}

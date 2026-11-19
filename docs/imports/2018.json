@@ -1,0 +1,177 @@
+{
+  "year": 2018,
+  "questions": [
+    {
+      "subject": "power-management",
+      "q": 1,
+      "title": "河川流量と自流式水力発電所の最大出力",
+      "topics": ["hydro-generation"],
+      "questionPages": [3],
+      "answerPages": [1]
+    },
+    {
+      "subject": "power-management",
+      "q": 2,
+      "title": "変電所母線の結線方式",
+      "topics": ["switchgear", "power-systems"],
+      "questionPages": [4],
+      "answerPages": [1, 2]
+    },
+    {
+      "subject": "power-management",
+      "q": 3,
+      "title": "電力円線図と無効電力損失",
+      "topics": ["transmission", "power-systems"],
+      "questionPages": [5],
+      "answerPages": [2, 3, 4, 5]
+    },
+    {
+      "subject": "power-management",
+      "q": 4,
+      "title": "地中配電系統の供給方式",
+      "topics": ["transmission"],
+      "questionPages": [6],
+      "answerPages": [6]
+    },
+    {
+      "subject": "power-management",
+      "q": 5,
+      "title": "進相コンデンサと高調波共振",
+      "topics": ["harmonics", "power-systems"],
+      "questionPages": [7, 8],
+      "answerPages": [7, 8, 9]
+    },
+    {
+      "subject": "power-management",
+      "q": 6,
+      "title": "送配電系統の中性点接地方式",
+      "topics": ["grounding"],
+      "questionPages": [9],
+      "answerPages": [9]
+    },
+    {
+      "subject": "machine-control",
+      "q": 1,
+      "title": "三相誘導電動機の始動方式",
+      "topics": ["rotating-machines", "inverters"],
+      "questionPages": [3],
+      "answerPages": [10, 11]
+    },
+    {
+      "subject": "machine-control",
+      "q": 2,
+      "title": "円筒形同期発電機の出力とフェーザ",
+      "topics": ["rotating-machines"],
+      "questionPages": [4],
+      "answerPages": [12, 13]
+    },
+    {
+      "subject": "machine-control",
+      "q": 3,
+      "title": "三相サイリスタ変換器による電力変換",
+      "topics": ["rectifiers"],
+      "questionPages": [5, 6],
+      "answerPages": [13, 14]
+    },
+    {
+      "subject": "machine-control",
+      "q": 4,
+      "title": "2自由度制御系とPI補償器",
+      "topics": ["control", "feedback"],
+      "questionPages": [7, 8],
+      "answerPages": [14, 15, 16, 17]
+    }
+  ],
+  "figures": [
+    {
+      "type": "power-management",
+      "page": 4,
+      "box": [140, 430, 660, 655],
+      "file": "2018-secondary-power-management-q02-fig01.png"
+    },
+    {
+      "type": "power-management",
+      "page": 5,
+      "box": [260, 905, 430, 155],
+      "file": "2018-secondary-power-management-q03-fig01.png"
+    },
+    {
+      "type": "power-management",
+      "page": 8,
+      "box": [145, 160, 640, 625],
+      "file": "2018-secondary-power-management-q05-fig01.png"
+    },
+    {
+      "type": "machine-control",
+      "page": 4,
+      "box": [140, 705, 680, 340],
+      "file": "2018-secondary-machine-control-q02-fig01.png"
+    },
+    {
+      "type": "machine-control",
+      "page": 6,
+      "box": [130, 130, 665, 285],
+      "file": "2018-secondary-machine-control-q03-fig01.png"
+    },
+    {
+      "type": "machine-control",
+      "page": 6,
+      "box": [270, 450, 380, 515],
+      "file": "2018-secondary-machine-control-q03-fig02.png"
+    },
+    {
+      "type": "machine-control",
+      "page": 7,
+      "box": [135, 705, 680, 285],
+      "file": "2018-secondary-machine-control-q04-fig01.png"
+    },
+    {
+      "type": "machine-control",
+      "page": 8,
+      "box": [140, 145, 590, 410],
+      "file": "2018-secondary-machine-control-q04-fig02.png"
+    },
+    {
+      "type": "answers",
+      "page": 4,
+      "box": [290, 418, 355, 350],
+      "file": "2018-secondary-power-management-q03-answer-fig01.png"
+    },
+    {
+      "type": "answers",
+      "page": 5,
+      "box": [205, 610, 330, 345],
+      "file": "2018-secondary-power-management-q03-answer-fig02.png"
+    },
+    {
+      "type": "answers",
+      "page": 7,
+      "box": [225, 220, 500, 215],
+      "file": "2018-secondary-power-management-q05-answer-fig01.png"
+    },
+    {
+      "type": "answers",
+      "page": 10,
+      "box": [235, 770, 510, 188],
+      "file": "2018-secondary-machine-control-q01-answer-fig01.png"
+    },
+    {
+      "type": "answers",
+      "page": 14,
+      "box": [200, 835, 570, 330],
+      "file": "2018-secondary-machine-control-q04-answer-fig01.png"
+    },
+    {
+      "type": "answers",
+      "page": 15,
+      "box": [160, 295, 585, 340],
+      "file": "2018-secondary-machine-control-q04-answer-fig02.png"
+    },
+    {
+      "type": "answers",
+      "page": 15,
+      "box": [160, 765, 585, 388],
+      "file": "2018-secondary-machine-control-q04-answer-fig03.png"
+    }
+  ]
+}
