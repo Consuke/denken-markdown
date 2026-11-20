@@ -18,14 +18,16 @@ npm ci
 Copy-Item .env.example .env
 ```
 
-| 変数                      | 用途                                       | 初期値・扱い                       |
-| ------------------------- | ------------------------------------------ | ---------------------------------- |
-| `PUBLIC_SITE_URL`         | canonical・OGP・sitemapの本番HTTPSオリジン | `https://example.com`（暫定）      |
-| `PUBLIC_CONTACT_EMAIL`    | 公開する訂正連絡先                         | 未設定。ページには「準備中」を表示 |
-| `PUBLIC_ENABLE_ANALYTICS` | 将来用                                     | `false`。MVPでは処理なし           |
-| `PUBLIC_ENABLE_ADS`       | 将来用                                     | `false`。MVPでは処理なし           |
+| 変数                      | 用途                                       | 初期値・扱い                          |
+| ------------------------- | ------------------------------------------ | ------------------------------------- |
+| `PUBLIC_SITE_URL`         | canonical・OGP・sitemapの本番HTTPSオリジン | `https://example.com`（暫定）         |
+| `PUBLIC_CONTACT_EMAIL`    | 公開する訂正連絡先                         | 未設定。ページには「準備中」を表示    |
+| `PUBLIC_ENABLE_ANALYTICS` | 将来用                                     | `false`。MVPでは処理なし              |
+| `PUBLIC_ENABLE_ADS`       | 将来用                                     | 未使用。AdSenseコードには連動しません |
 
 `PUBLIC_`変数は公開情報です。秘密情報を入れないでください。`PUBLIC_SITE_URL`にパス・認証情報・クエリは指定できません。暫定ドメインのままでは`noindex`と`robots.txt`の`Disallow: /`を出力します。本番ドメインを設定すると通常ページをインデックス可能にします。
+
+AdSenseコードは[BaseLayout.astro](src/layouts/BaseLayout.astro)に設定しています。追加の環境変数は不要です。本番のインデックス可能なページだけに出力し、開発・サンプルプレビュー・404・暫定ドメインでは出力しません。[ads.txt](public/ads.txt)も同じパブリッシャーIDで公開します。出力検証では指定のAdSenseコードのみを許可し、件数・配置・属性・ads.txtとのID一致も確認します。
 
 ## 開発と本番出力
 
@@ -159,11 +161,11 @@ Prettierはコピー原文の意図しない変更を避けるため問題Markdo
 - 白背景・黒い本文・青いリンク・system font・素のCSSを採用。本文幅は最大820px、数式領域だけが横スクロールします。
 - トップは科目・年度・分野の分類リンク、一覧は問題名が中心です。分類の切り替えと出典・更新情報は必要なときに開けます。キャッチコピーや装飾カード、本文前の重複する説明は置きません。
 - Astro 7の既定Markdown処理の変更に対応し、remark/rehypeを`markdown.processor: unified(...)`で明示。旧オプションと混在しません。
-- SSRアダプター・DB・認証・React・広告・解析は未導入。
+- AdSenseの審査・広告配信用コードとads.txtを設置。広告の掲載にはGoogle側の審査・設定が必要です。SSRアダプター・DB・認証・React・アクセス解析専用タグは未導入。
 - サイト名・ドメイン・連絡先は仮設定。アカウント連携・実機検証・権利確認は公開前の手動作業です。
 - Lighthouse・Core Web Vitalsは未測定。実機や本番配信での目標値は保証しません。
 
-M5（全文検索、ブックマーク、学習履歴、管理用CSV/JSON出力、広告、アフィリエイト、Anki、ランダム出題）は未実装です。
+M5（全文検索、ブックマーク、学習履歴、管理用CSV/JSON出力、広告枠の個別配置、アフィリエイト、Anki、ランダム出題）は未実装です。
 
 ## 公式資料
 

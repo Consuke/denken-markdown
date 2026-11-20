@@ -13,6 +13,8 @@ import { outputFiles, routeForFile, validateLinks } from './validate-links';
 
 const preview = process.argv.includes('--preview');
 const directory = path.resolve(preview ? 'dist-preview' : 'dist');
+const adsenseScriptSource =
+  'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5293965345695237';
 const entries = await readQuestionSources();
 const visible = entries.filter(
   (entry) => preview || isPublicQuestion(entry.data),
@@ -96,10 +98,32 @@ for (const filename of htmlFiles) {
       '404はnoindexが必要です',
     );
   expect($('.katex-error').length === 0, `${route}: 数式エラーがあります`);
+  const externalScripts = $('script[src]').filter((_, element) =>
+    /^(?:https?:)?\/\//i.test($(element).attr('src') ?? ''),
+  );
+  const adsenseScripts = externalScripts.filter(
+    (_, element) => $(element).attr('src') === adsenseScriptSource,
+  );
   expect(
-    $('script[src^="http"], iframe').length === 0,
+    externalScripts.length === adsenseScripts.length &&
+      $('iframe').length === 0,
     `${route}: 想定外の外部スクリプトがあります`,
   );
+  const shouldLoadAdsense =
+    !preview && !$('meta[name="robots"]').attr('content')?.includes('noindex');
+  expect(
+    adsenseScripts.length === (shouldLoadAdsense ? 1 : 0),
+    `${route}: AdSenseコードの有無・件数が公開条件と一致しません`,
+  );
+  for (const element of adsenseScripts.toArray()) {
+    const script = $(element);
+    expect(
+      script.parent().is('head') &&
+        script.attr('async') !== undefined &&
+        script.attr('crossorigin') === 'anonymous',
+      `${route}: AdSenseコードの配置または属性が不正です`,
+    );
+  }
   for (const entry of hidden)
     expect(
       !html.includes(entry.id) && !html.includes(entry.data.title),
@@ -166,6 +190,14 @@ for (const entry of visible) {
   );
 }
 
+const adsTxt = await readFile(path.join(directory, 'ads.txt'), 'utf8');
+const publisherId = new URL(adsenseScriptSource).searchParams
+  .get('client')!
+  .replace(/^ca-/, '');
+expect(
+  adsTxt.trim() === `google.com, ${publisherId}, DIRECT, f08c47fec0942fa0`,
+  'ads.txtとAdSenseコードのパブリッシャーIDが一致しません',
+);
 const robots = await readFile(path.join(directory, 'robots.txt'), 'utf8');
 if (preview) {
   expect(
