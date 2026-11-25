@@ -10,6 +10,7 @@ import {
   questionDiagramPrefix,
 } from '../src/lib/question-diagrams';
 import { outputFiles, routeForFile, validateLinks } from './validate-links';
+import { aiServices, buildAiLinks, maxAiUrlLength } from '../src/lib/ai-prompt';
 
 const preview = process.argv.includes('--preview');
 const directory = path.resolve(preview ? 'dist-preview' : 'dist');
@@ -160,6 +161,35 @@ for (const entry of visible) {
     payload.answer === sections.answer?.markdown,
     `${entry.id}: 解答のコピー原文が一致しません`,
   );
+  const ai = buildAiLinks(
+    {
+      title: entry.data.title,
+      subject: entry.data.subject,
+      pageUrl: `${origin}/questions/${entry.id}/`,
+      question: sections.question.markdown,
+      answer: sections.answer?.markdown,
+    },
+    origin,
+  );
+  expect(
+    payload.prompt === ai.prompt && $('#ai-prompt').text() === ai.prompt,
+    `${entry.id}: AI解説用プロンプトが原文から生成した内容と一致しません`,
+  );
+  const aiLinks = $('a[data-ai-service]');
+  expect(
+    aiLinks.length === aiServices.length,
+    `${entry.id}: AIで解説するリンクの数が正しくありません`,
+  );
+  aiLinks.each((index, element) => {
+    const href = $(element).attr('href') ?? '';
+    expect(
+      href === ai.links[index]!.href &&
+        href.length <= maxAiUrlLength &&
+        $(element).attr('target') === '_blank' &&
+        ($(element).attr('rel') ?? '').includes('noopener'),
+      `${entry.id}: ${ai.links[index]!.label}へのリンクが正しくありません`,
+    );
+  });
   expect(
     $('details#answer').length === (sections.answer ? 1 : 0),
     `${entry.id}: 解答欄の有無が原文と一致しません`,

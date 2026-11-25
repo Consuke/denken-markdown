@@ -1,6 +1,10 @@
 ---
 import { getVisibleQuestions } from '../lib/questions';
 import { subjects, topics, subjectSlugs, topicSlugs } from '../lib/taxonomy';
+interface Props {
+  headingLevel?: 2 | 3;
+}
+const Heading = Astro.props.headingLevel === 3 ? 'h3' : 'h2';
 const all = await getVisibleQuestions();
 const years = [...new Set(all.map((question) => question.data.year))].sort(
   (a, b) => b - a,
@@ -9,7 +13,7 @@ const years = [...new Set(all.map((question) => question.data.year))].sort(
 
 <nav class="browse-filters" aria-label="問題の分類から探す">
   <section>
-    <h2>科目別</h2>
+    <Heading>科目別</Heading>
     <ul>
       {subjectSlugs.map((subject) => (
         <li>
@@ -20,7 +24,7 @@ const years = [...new Set(all.map((question) => question.data.year))].sort(
   </section>
   {years.length > 0 && (
     <section>
-      <h2>年度別</h2>
+      <Heading>年度別</Heading>
       <ul>
         {years.map((year) => (
           <li>
@@ -31,7 +35,7 @@ const years = [...new Set(all.map((question) => question.data.year))].sort(
     </section>
   )}
   <section>
-    <h2>分野別</h2>
+    <Heading>分野別</Heading>
     <ul>
       {topicSlugs.map((topic) => (
         <li>

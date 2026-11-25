@@ -1,0 +1,52 @@
+---
+import type { AiLink } from '../lib/ai-prompt';
+import CopyButton from './CopyButton.astro';
+interface Props {
+  prompt: string;
+  links: AiLink[];
+  hasAnswer: boolean;
+}
+const { prompt, links, hasAnswer } = Astro.props;
+const answerOmitted = hasAnswer && links.some((link) => !link.includesAnswer);
+---
+
+<section class="ai-explain" aria-labelledby="ai-explain-title">
+  <h2 id="ai-explain-title">AIで解説する</h2>
+  <p class="ai-explain-lead">
+    問題文{hasAnswer && !answerOmitted && 'と公式解答'}
+    を入力した状態で、AIの新しいチャットを開きます。内容を確認して送信してください。
+  </p>
+  <ul class="ai-buttons">
+    {links.map((link) => (
+      <li>
+        <a
+          class={`ai-button ai-button-${link.id}`}
+          href={link.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          data-ai-service={link.label}
+        >
+          {link.label}で解説
+        </a>
+      </li>
+    ))}
+  </ul>
+  {answerOmitted && (
+    <p class="ai-explain-note">
+      この問題は長いため、ボタンでは問題文だけを渡します。公式解答も含めるときは、下の全文をコピーして貼り付けてください。
+    </p>
+  )}
+  <details class="ai-prompt">
+    <summary>プロンプトの全文を見る</summary>
+    <textarea
+      id="ai-prompt"
+      readonly
+      rows="10"
+      aria-label="解説用プロンプト"
+    >{prompt}</textarea>
+    <CopyButton section="prompt" label="プロンプトをコピー" />
+  </details>
+  <p class="ai-explain-note">
+    AIの解説は誤りを含むことがあります。公式解答と照らし合わせて確認してください。
+  </p>
+</section>

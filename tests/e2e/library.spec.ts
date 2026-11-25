@@ -210,6 +210,57 @@ test('Markdownのコピー値が数式を含めて原文と一致し、成功・
   await expect(questionCopy).toBeEnabled();
 });
 
+test('ホームでAI解説向けのサイトであることを示す', async ({ page }) => {
+  await page.goto('/');
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText(
+    '過去問を、そのままAIに解説させる。',
+  );
+  await expect(page.getByRole('heading', { name: '使い方' })).toBeVisible();
+  await expect(page.locator('.steps li')).toHaveCount(3);
+});
+
+test('ChatGPT・ClaudeへのリンクにプロンプトをURLで渡し、全文もコピーできる', async ({
+  page,
+}) => {
+  await page.addInitScript(() => {
+    const state = window as unknown as { copied: string[] };
+    state.copied = [];
+    Object.defineProperty(navigator, 'clipboard', {
+      configurable: true,
+      value: {
+        writeText: async (value: string) => {
+          state.copied.push(value);
+        },
+      },
+    });
+  });
+  await page.goto(sampleUrl);
+  const prompt = await page.locator('#ai-prompt').inputValue();
+  expect(prompt).toContain(sample.data.title);
+  expect(prompt).toContain('# 公式標準解答');
+  for (const [name, origin] of [
+    ['ChatGPTで解説', 'https://chatgpt.com'],
+    ['Claudeで解説', 'https://claude.ai'],
+  ] as const) {
+    const link = page.getByRole('link', { name });
+    await expect(link).toBeVisible();
+    await expect(link).toHaveAttribute('target', '_blank');
+    const url = new URL((await link.getAttribute('href'))!);
+    expect(url.origin).toBe(origin);
+    expect(url.searchParams.get('q')).toBe(prompt);
+  }
+  await page.getByText('プロンプトの全文を見る').click();
+  await page.getByRole('button', { name: 'プロンプトをコピー' }).click();
+  await expect(page.getByRole('status')).toHaveText('コピーしました');
+  await expect
+    .poll(() =>
+      page.evaluate(() =>
+        (window as unknown as { copied: string[] }).copied.at(-1),
+      ),
+    )
+    .toBe(prompt);
+});
+
 test('実際のClipboard APIへ書き込める', async ({
   page,
   context,

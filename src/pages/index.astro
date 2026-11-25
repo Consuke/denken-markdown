@@ -2,19 +2,97 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import BrowseFilters from '../components/BrowseFilters.astro';
 import { getVisibleQuestions } from '../lib/questions';
+import { extractSections } from '../lib/markdown-export';
 const questions = await getVisibleQuestions();
+const real = questions.filter((question) => !question.data.sample);
+const years = real.map((question) => question.data.year);
+const answerYears = real
+  .filter((question) => extractSections(question.body ?? '').answer)
+  .map((question) => question.data.year);
+const range = (values: number[]) =>
+  values.length === 0
+    ? ''
+    : Math.min(...values) === Math.max(...values)
+      ? `${Math.min(...values)}年度`
+      : `${Math.min(...values)}〜${Math.max(...values)}年度`;
 ---
 
-<BaseLayout title="問題を探す">
+<BaseLayout title="AIで解説できる過去問集">
   <div class="reading-width">
-    <h1>問題を探す</h1>
-    {questions.some((question) => question.data.sample) && (
-      <p class="sample-notice">架空のサンプル問題を含みます。</p>
-    )}
-    {questions.length === 0 && <p>公開済みの問題はまだありません。</p>}
-    <BrowseFilters />
-    <p class="all-questions">
-      <a href="/questions/">すべての問題を見る</a>
-    </p>
+    <section class="hero" aria-labelledby="hero-title">
+      {real.length > 0 && (
+        <p class="hero-eyebrow">
+          電験二種 二次試験・{range(years)}・{real.length}問
+        </p>
+      )}
+      <h1 id="hero-title">過去問を、そのままAIに解説させる。</h1>
+      <p class="hero-lead">
+        問題文と公式解答をMarkdown・LaTeX形式で収録しています。各問題の「ChatGPTで解説」「Claudeで解説」ボタンを押すと、問題文が入力された状態でAIが開きます。
+      </p>
+      <p class="hero-actions">
+        <a class="button-primary" href="/questions/">
+          問題一覧を見る
+        </a>
+      </p>
+    </section>
+
+    <section class="home-section" aria-labelledby="steps-title">
+      <h2 id="steps-title">使い方</h2>
+      <ol class="steps">
+        <li>
+          <strong>問題を選ぶ</strong>
+          <span>科目・年度・分野から探せます。</span>
+        </li>
+        <li>
+          <strong>AIのボタンを押す</strong>
+          <span>
+            問題文と公式解答を入れた解説用プロンプトで、AIが開きます。
+          </span>
+        </li>
+        <li>
+          <strong>送信して解説を読む</strong>
+          <span>考え方・公式・計算過程を、AIが順を追って説明します。</span>
+        </li>
+      </ol>
+    </section>
+
+    <section class="home-section" aria-labelledby="features-title">
+      <h2 id="features-title">AIに渡しやすい理由</h2>
+      <ul class="features">
+        <li>
+          <strong>数式はLaTeXのまま</strong>
+          <span>
+            画面からのコピーでは崩れやすい数式も、原文のLaTeXでAIに渡せます。
+          </span>
+        </li>
+        <li>
+          <strong>公式解答つき</strong>
+          <span>
+            {`${range(answerYears)}は公式標準解答を収録。AIは正解に沿って解説します。`}
+          </span>
+        </li>
+        <li>
+          <strong>図はURLで添付</strong>
+          <span>
+            問題の図は画像URLとして渡します。AIが画像を開けないときは、図を保存して添付してください。
+          </span>
+        </li>
+      </ul>
+      <p class="fine-print">
+        AIの解説は誤りを含むことがあります。公式解答と照らし合わせて確認してください。
+      </p>
+    </section>
+
+    <section class="home-section" aria-labelledby="browse-title">
+      <h2 id="browse-title">問題を探す</h2>
+      {questions.some((question) => question.data.sample) && (
+        <p class="sample-notice">架空のサンプル問題を含みます。</p>
+      )}
+      {questions.length === 0 && <p>公開済みの問題はまだありません。</p>}
+      <BrowseFilters headingLevel={3} />
+      <p class="all-questions">
+        <a href="/questions/">すべての問題を見る</a>
+      </p>
+    </section>
   </div>
 </BaseLayout>

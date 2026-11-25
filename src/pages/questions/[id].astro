@@ -3,6 +3,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import QuestionMeta from '../../components/QuestionMeta.astro';
 import CopyButton from '../../components/CopyButton.astro';
 import AnswerDisclosure from '../../components/AnswerDisclosure.astro';
+import AiExplain from '../../components/AiExplain.astro';
+import { buildAiLinks } from '../../lib/ai-prompt';
 import { getVisibleQuestions, type Question } from '../../lib/questions';
 import { extractSections } from '../../lib/markdown-export';
 import { renderSection } from '../../lib/render-section';
@@ -33,9 +35,21 @@ const [questionHtml, answerHtml, explanationHtml, knowledgeHtml] =
       ? renderSection(sections.knowledge)
       : Promise.resolve(''),
   ]);
+const origin = (Astro.site ?? new URL('https://example.com')).origin;
+const ai = buildAiLinks(
+  {
+    title: question.data.title,
+    subject: question.data.subject,
+    pageUrl: new URL(`/questions/${question.id}/`, origin).href,
+    question: sections.question.markdown,
+    answer: sections.answer?.markdown,
+  },
+  origin,
+);
 const payload = safeJson({
   question: sections.question.markdown,
   ...(sections.answer ? { answer: sections.answer.markdown } : {}),
+  prompt: ai.prompt,
 });
 const related = relatedQuestions(question, await getVisibleQuestions());
 ---
@@ -66,9 +80,14 @@ const related = relatedQuestions(question, await getVisibleQuestions());
       <h1>{question.data.title}</h1>
       <QuestionMeta question={question} />
     </header>
+    <AiExplain
+      prompt={ai.prompt}
+      links={ai.links}
+      hasAnswer={Boolean(sections.answer)}
+    />
     <noscript>
       <p class="notice">
-        コピー機能にはJavaScriptが必要です。本文はそのまま閲覧できます。
+        コピー機能にはJavaScriptが必要です。本文とAIで解説するボタンはそのまま使えます。
       </p>
     </noscript>
     <section aria-labelledby="question-title" id="question">
