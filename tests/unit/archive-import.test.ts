@@ -59,15 +59,15 @@ describe('2017〜2025年度の問題・公式解答の取り込み', () => {
     }
   });
 
-  it('問題と公式解答だけを収録し、全問を下書きに保つ', () => {
+  it('問題と公式解答だけを収録し、全問を公開する', () => {
     for (const entry of entries) {
       expect(Object.keys(extractSections(entry.body)), entry.id).toEqual([
         'question',
         'answer',
       ]);
       expect(entry.data.partNumber, entry.id).toBeUndefined();
-      expect(entry.data.reviewStatus, entry.id).toBe('draft');
-      expect(isPublicQuestion(entry.data), entry.id).toBe(false);
+      expect(entry.data.reviewStatus, entry.id).toBe('published');
+      expect(isPublicQuestion(entry.data), entry.id).toBe(true);
     }
   });
 

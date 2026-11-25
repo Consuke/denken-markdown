@@ -46,6 +46,11 @@ export const topics = {
     label: '中性点接地',
     description: '電験二種・二次試験の中性点接地方式に関する問題。',
   },
+  earthing: {
+    label: '接地設計',
+    description:
+      '電験二種・二次試験の変電所等の接地設計と歩幅電圧・接触電圧に関する問題。',
+  },
   'equipment-maintenance': {
     label: '設備保全・診断',
     description: '電験二種・二次試験の設備の点検・保全・診断に関する問題。',
@@ -53,6 +58,11 @@ export const topics = {
   rectifiers: {
     label: '整流回路',
     description: '電験二種・二次試験の整流回路に関する問題。',
+  },
+  'ac-converters': {
+    label: '交流電力変換',
+    description:
+      '電験二種・二次試験の交流電力調整回路とサイクロコンバータに関する問題。',
   },
   'thermal-generation': {
     label: '火力発電',

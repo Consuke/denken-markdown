@@ -39,11 +39,11 @@ describe('2026年度PDFの取り込み', () => {
       );
     }
   });
-  it('全問が下書きであり、本番には公開しない', () => {
+  it('全問を本番に公開する', () => {
     expect(entries).toHaveLength(10);
     for (const entry of entries) {
-      expect(entry.data.reviewStatus).toBe('draft');
-      expect(isPublicQuestion(entry.data)).toBe(false);
+      expect(entry.data.reviewStatus).toBe('published');
+      expect(isPublicQuestion(entry.data)).toBe(true);
       expect(entry.data.sourceUrl).toMatch(
         /^https:\/\/www\.shiken\.or\.jp\/chief\/upload\/20261115_ch_second_q0[12]\.pdf#page=\d+$/,
       );
