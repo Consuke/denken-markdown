@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import ArticleList from '../../components/ArticleList.astro';
+import { getVisibleArticles } from '../../lib/articles';
+import { articleCategoryGroups } from '../../lib/article-model';
+import { articleCategories } from '../../lib/taxonomy';
+
+// 公開記事が0件のときは一覧ページ自体を出力しない（空ページを索引させない）。
+export async function getStaticPaths() {
+  const articles = await getVisibleArticles();
+  return articles.length
+    ? [{ params: { index: undefined }, props: { articles } }]
+    : [];
+}
+const { articles } = Astro.props;
+const categories = articleCategoryGroups(articles);
+---
+
+<BaseLayout
+  title="解説記事"
+  description="電験二種の難しい概念を、直感的に理解するための解説記事。交流・複素数・対称座標法・ラプラス変換などを、疑問から順に説明します。"
+>
+  <div class="reading-width">
+    <Breadcrumbs items={[{ label: '解説記事' }]} />
+    <section class="hero articles-hero" aria-labelledby="articles-title">
+      <p class="hero-eyebrow">解説記事</p>
+      <h1 id="articles-title">電験を、もっと直感的に理解する。</h1>
+      <p class="hero-lead">
+        教科書を読んでも腑に落ちなかった「なんで？」を、イメージから数式へ順に解説します。記事で理解したら、関連する過去問で試してみてください。
+      </p>
+    </section>
+    <section class="home-section" aria-labelledby="categories-title">
+      <h2 id="categories-title">カテゴリ</h2>
+      <ul class="category-links">
+        {categories.map(({ slug, articles }) => (
+          <li>
+            <a href={'/articles/category/' + slug + '/'}>
+              {articleCategories[slug].label}
+            </a>
+            <span class="question-count">{articles.length}件</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+    <section class="home-section" aria-labelledby="latest-title">
+      <h2 id="latest-title">新着記事</h2>
+      <ArticleList articles={articles} headingLevel={3} />
+    </section>
+  </div>
+</BaseLayout>

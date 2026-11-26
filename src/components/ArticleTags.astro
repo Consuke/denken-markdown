@@ -1,0 +1,17 @@
+---
+import { articleTags, type ArticleTag } from '../lib/taxonomy';
+interface Props {
+  tags: readonly ArticleTag[];
+}
+const { tags } = Astro.props;
+---
+
+{tags.length > 0 && (
+  <ul class="topic-links article-tags" aria-label="タグ">
+    {tags.map((tag) => (
+      <li>
+        <a href={'/articles/tag/' + tag + '/'}>#{articleTags[tag].label}</a>
+      </li>
+    ))}
+  </ul>
+)}

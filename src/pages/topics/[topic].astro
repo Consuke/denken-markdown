@@ -2,21 +2,26 @@
 import QuestionIndex from '../../components/QuestionIndex.astro';
 import { getVisibleQuestions, type Question } from '../../lib/questions';
 import { topics, topicSlugs, type Topic } from '../../lib/taxonomy';
+import { getVisibleArticles, type Article } from '../../lib/articles';
+import { articlesForTopic } from '../../lib/article-model';
 export async function getStaticPaths() {
   const all = await getVisibleQuestions();
+  const articles = await getVisibleArticles();
   return topicSlugs.map((topic) => ({
     params: { topic },
     props: {
       topic,
       questions: all.filter((entry) => entry.data.topics.includes(topic)),
+      articles: articlesForTopic(topic, articles, all),
     },
   }));
 }
 interface Props {
   topic: Topic;
   questions: Question[];
+  articles: Article[];
 }
-const { topic, questions } = Astro.props;
+const { topic, questions, articles } = Astro.props;
 const title = `${topics[topic].label}の問題`;
 ---
 
@@ -24,6 +29,7 @@ const title = `${topics[topic].label}の問題`;
   title={title}
   description={topics[topic].description}
   questions={questions}
+  articles={articles}
   breadcrumbs={[
     { label: '問題一覧', href: '/questions/' },
     { label: topics[topic].label },

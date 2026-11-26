@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs, { type Crumb } from './Breadcrumbs.astro';
+import ArticleList from './ArticleList.astro';
+import type { Article } from '../lib/articles';
+interface Props {
+  title: string;
+  description: string;
+  articles: Article[];
+  breadcrumbs: Crumb[];
+  noindex?: boolean;
+}
+const { title, description, articles, breadcrumbs, noindex } = Astro.props;
+---
+
+<BaseLayout title={title} description={description} noindex={noindex}>
+  <div class="reading-width">
+    <Breadcrumbs items={breadcrumbs} />
+    <header class="page-heading">
+      <h1>{title}</h1>
+      <span class="question-count">{articles.length}件</span>
+    </header>
+    <p class="index-description">{description}</p>
+    <ArticleList articles={articles} />
+    <p class="all-questions">
+      <a href="/articles/">解説記事のトップへ</a>
+    </p>
+  </div>
+</BaseLayout>

@@ -3,7 +3,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import BrowseFilters from '../components/BrowseFilters.astro';
 import { getVisibleQuestions } from '../lib/questions';
 import { extractSections } from '../lib/markdown-export';
+import ArticleList from '../components/ArticleList.astro';
+import { getVisibleArticles } from '../lib/articles';
 const questions = await getVisibleQuestions();
+const articles = await getVisibleArticles();
 const real = questions.filter((question) => !question.data.sample);
 const years = real.map((question) => question.data.year);
 const answerYears = real
@@ -94,5 +97,15 @@ const range = (values: number[]) =>
         <a href="/questions/">すべての問題を見る</a>
       </p>
     </section>
+
+    {articles.length > 0 && (
+      <section class="home-section" aria-labelledby="articles-title">
+        <h2 id="articles-title">新着の解説記事</h2>
+        <ArticleList articles={articles.slice(0, 3)} headingLevel={3} />
+        <p class="all-questions">
+          <a href="/articles/">すべての記事を見る</a>
+        </p>
+      </section>
+    )}
   </div>
 </BaseLayout>

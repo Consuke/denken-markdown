@@ -1,0 +1,128 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import ArticleList from '../../components/ArticleList.astro';
+import ArticleTags from '../../components/ArticleTags.astro';
+import CopyButton from '../../components/CopyButton.astro';
+import QuestionList from '../../components/QuestionList.astro';
+import { getVisibleArticles, type Article } from '../../lib/articles';
+import { getVisibleQuestions } from '../../lib/questions';
+import { articleCopyMarkdown, nextArticles } from '../../lib/article-model';
+import { addHeadingIds } from '../../lib/article-toc';
+import { parseArticleBody } from '../../lib/markdown-export';
+import { renderSection } from '../../lib/render-section';
+import { safeJson } from '../../lib/safe-json';
+import { articleCategories } from '../../lib/taxonomy';
+
+export async function getStaticPaths() {
+  return (await getVisibleArticles()).map((article) => ({
+    params: { id: article.id },
+    props: { article },
+  }));
+}
+interface Props {
+  article: Article;
+}
+const { article } = Astro.props;
+const { data } = article;
+const tree = parseArticleBody(article.body);
+const toc = addHeadingIds(tree);
+const html = await renderSection({ tree });
+// 非公開の問題・記事は本番に出さないため、表示対象だけに絞る。
+const questions = (await getVisibleQuestions()).filter((question) =>
+  data.relatedQuestions.includes(question.id),
+);
+const next = nextArticles(article, await getVisibleArticles());
+const origin = (Astro.site ?? new URL('https://example.com')).origin;
+const payload = safeJson({ article: articleCopyMarkdown(article, origin) });
+const category = articleCategories[data.category].label;
+const formatDate = (date: string) => date.replaceAll('-', '/');
+---
+
+<BaseLayout
+  title={data.title}
+  description={data.description}
+  article={{
+    publishedAt: data.publishedAt,
+    updatedAt: data.updatedAt,
+    category,
+  }}
+>
+  <Breadcrumbs
+    items={[
+      { label: '解説記事', href: '/articles/' },
+      { label: category, href: `/articles/category/${data.category}/` },
+      { label: data.title },
+    ]}
+  />
+  <article class="reading-width">
+    <header class="question-heading">
+      <h1>{data.title}</h1>
+      <div class="question-meta">
+        <p class="meta-line">
+          <a href={`/articles/category/${data.category}/`}>{category}</a>
+          <span>
+            公開{' '}
+            <time datetime={data.publishedAt}>
+              {formatDate(data.publishedAt)}
+            </time>
+          </span>
+          {data.updatedAt !== data.publishedAt && (
+            <span>
+              更新{' '}
+              <time datetime={data.updatedAt}>
+                {formatDate(data.updatedAt)}
+              </time>
+            </span>
+          )}
+        </p>
+        <ArticleTags tags={data.tags} />
+        {data.sample && <p class="sample-notice">架空のサンプル記事です。</p>}
+        <p class="article-copy">
+          <CopyButton section="article" label="記事のMarkdownをコピー" />
+        </p>
+      </div>
+    </header>
+    {toc.length >= 2 && (
+      <nav class="article-toc" aria-labelledby="toc-title">
+        <h2 id="toc-title">目次</h2>
+        <ol>
+          {toc.map((item) => (
+            <li class={item.depth === 3 ? 'toc-sub' : undefined}>
+              <a href={'#' + item.id}>{item.text}</a>
+            </li>
+          ))}
+        </ol>
+      </nav>
+    )}
+    <div class="prose article-body" set:html={html} />
+    {questions.length > 0 && (
+      <section aria-labelledby="article-questions-title">
+        <h2 id="article-questions-title">この知識を使う過去問</h2>
+        <QuestionList questions={questions} headingLevel={3} />
+      </section>
+    )}
+    {next.length > 0 && (
+      <section aria-labelledby="next-articles-title">
+        <h2 id="next-articles-title">次に読んでほしい記事</h2>
+        <ArticleList articles={next} headingLevel={3} />
+      </section>
+    )}
+    <p class="correction-link">
+      <a href="/corrections/">訂正を依頼する</a>
+    </p>
+  </article>
+  <p
+    id="copy-status"
+    class="copy-status"
+    role="status"
+    aria-live="polite"
+    aria-atomic="true"
+  ></p>
+  <script
+    is:inline
+    type="application/json"
+    id="copy-sources"
+    set:html={payload}
+  />
+</BaseLayout>

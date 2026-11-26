@@ -1,3 +1,9 @@
+---
+import { getVisibleArticles } from '../lib/articles';
+// 公開記事が0件のときは、まだ存在しない一覧ページへのリンクを出さない。
+const hasArticles = (await getVisibleArticles()).length > 0;
+---
+
 <a class="skip-link" href="#main">
   本文へスキップ
 </a>
@@ -8,6 +14,7 @@
     </a>
     <nav aria-label="メインナビゲーション">
       <a href="/questions/">問題一覧</a>
+      {hasArticles && <a href="/articles/">解説記事</a>}
     </nav>
   </div>
 </header>

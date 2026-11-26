@@ -1,5 +1,13 @@
 import { z } from 'astro/zod';
-import { subjectSlugs, topicSlugs } from './taxonomy';
+import {
+  articleCategories,
+  articleTags,
+  slugForLabel,
+  subjectSlugs,
+  topicSlugs,
+  type ArticleCategory,
+  type ArticleTag,
+} from './taxonomy';
 
 export function todayInJapan(now = new Date()): string {
   return new Intl.DateTimeFormat('sv-SE', { timeZone: 'Asia/Tokyo' }).format(
@@ -76,3 +84,59 @@ export const questionSchema = z
   });
 
 export type QuestionData = z.output<typeof questionSchema>;
+
+const uniqueList = <T extends z.ZodType>(item: T, label: string) =>
+  z
+    .array(item)
+    .refine(
+      (values) => new Set(values).size === values.length,
+      `${label}が重複しています`,
+    );
+const contentSlug = z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/);
+
+/** 日本語の名前を受け取り、辞書のslugに変換する。辞書にない名前は拒否する。 */
+const labelOf = <K extends string>(
+  dictionary: Record<K, { label: string }>,
+  kind: string,
+) =>
+  z.string().transform((label, context) => {
+    const slug = slugForLabel(dictionary, label);
+    if (!slug) {
+      context.addIssue({
+        code: 'custom',
+        message: `未登録の${kind}です: ${label}（src/lib/taxonomy.tsに追加してください）`,
+      });
+      return z.NEVER;
+    }
+    return slug;
+  });
+
+export const articleSchema = z
+  .strictObject({
+    title: z.string().trim().min(1).max(150),
+    description: z.string().trim().min(1).max(300),
+    category: labelOf<ArticleCategory>(articleCategories, 'カテゴリ'),
+    tags: uniqueList(labelOf<ArticleTag>(articleTags, 'タグ'), 'タグ').default(
+      [],
+    ),
+    /** 記事で扱う問題のID（ファイル名）。存在しないIDはビルドで失敗する */
+    relatedQuestions: uniqueList(contentSlug, '関連問題').default([]),
+    /** 「次に読んでほしい記事」のID。省略時は同じタグの記事を自動で表示する */
+    next: uniqueList(contentSlug, '次の記事').default([]),
+    publishedAt: isoDate,
+    updatedAt: isoDate,
+    draft: z.boolean().default(false),
+    sample: z.boolean().default(false),
+  })
+  .superRefine((data, context) => {
+    const issue = (path: string, message: string) =>
+      context.addIssue({ code: 'custom', path: [path], message });
+    if (data.publishedAt > data.updatedAt)
+      issue('updatedAt', '公開日以降の日付を指定してください');
+    if (data.updatedAt > todayInJapan())
+      issue('updatedAt', '未来の更新日は指定できません（日本時間）');
+    if (data.sample && !data.title.includes('架空'))
+      issue('sample', 'サンプル記事はtitleに「架空」と明記してください');
+  });
+
+export type ArticleData = z.output<typeof articleSchema>;

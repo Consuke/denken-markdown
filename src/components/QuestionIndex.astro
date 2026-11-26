@@ -4,13 +4,22 @@ import Breadcrumbs, { type Crumb } from './Breadcrumbs.astro';
 import BrowseFilters from './BrowseFilters.astro';
 import QuestionList from './QuestionList.astro';
 import type { Question } from '../lib/questions';
+import ArticleList from './ArticleList.astro';
+import type { Article } from '../lib/articles';
 interface Props {
   title: string;
   description: string;
   questions: Question[];
   breadcrumbs: Crumb[];
+  articles?: Article[];
 }
-const { title, description, questions, breadcrumbs } = Astro.props;
+const {
+  title,
+  description,
+  questions,
+  breadcrumbs,
+  articles = [],
+} = Astro.props;
 ---
 
 <BaseLayout title={title} description={description}>
@@ -24,6 +33,16 @@ const { title, description, questions, breadcrumbs } = Astro.props;
       <summary>科目・年度・分野を選ぶ</summary>
       <BrowseFilters />
     </details>
+    {articles.length > 0 && (
+      <section class="index-articles" aria-labelledby="index-articles-title">
+        <h2 id="index-articles-title">この分野の解説記事</h2>
+        <ArticleList
+          articles={articles}
+          headingLevel={3}
+          showDescription={false}
+        />
+      </section>
+    )}
     <QuestionList questions={questions} />
   </div>
 </BaseLayout>

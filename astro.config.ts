@@ -10,6 +10,7 @@ import {
   rehypeAssertMath,
 } from './src/lib/math';
 import { siteOrigin } from './src/lib/site';
+import { thinTagRoutes } from './src/lib/content-files';
 
 const preview = process.env.LOCAL_SAMPLE_PREVIEW === '1';
 const env = loadEnv(
@@ -19,6 +20,13 @@ const env = loadEnv(
 );
 if (preview && process.env.CF_PAGES === '1')
   throw new Error('サンプルプレビュービルドはCloudflare Pagesに配置できません');
+
+// 記事の少ないタグページはnoindexにするため、サイトマップにも載せない。
+const excludedFromSitemap = new Set([
+  '/404.html',
+  '/404/',
+  ...(preview ? [] : await thinTagRoutes()),
+]);
 
 export default defineConfig({
   site: siteOrigin(process.env.PUBLIC_SITE_URL || env.PUBLIC_SITE_URL),
@@ -37,8 +45,7 @@ export default defineConfig({
     ? []
     : [
         sitemap({
-          filter: (page) =>
-            !['/404.html', '/404/'].includes(new URL(page).pathname),
+          filter: (page) => !excludedFromSitemap.has(new URL(page).pathname),
         }),
       ],
   devToolbar: { enabled: false },

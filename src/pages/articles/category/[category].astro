@@ -1,0 +1,28 @@
+---
+import ArticleIndex from '../../../components/ArticleIndex.astro';
+import { getVisibleArticles, type Article } from '../../../lib/articles';
+import { articleCategoryGroups } from '../../../lib/article-model';
+import { articleCategories, type ArticleCategory } from '../../../lib/taxonomy';
+
+export async function getStaticPaths() {
+  return articleCategoryGroups(await getVisibleArticles()).map(
+    ({ slug, articles }) => ({
+      params: { category: slug },
+      props: { category: slug, articles },
+    }),
+  );
+}
+interface Props {
+  category: ArticleCategory;
+  articles: Article[];
+}
+const { category, articles } = Astro.props;
+const { label, description } = articleCategories[category];
+---
+
+<ArticleIndex
+  title={`${label}の記事`}
+  description={description}
+  articles={articles}
+  breadcrumbs={[{ label: '解説記事', href: '/articles/' }, { label }]}
+/>

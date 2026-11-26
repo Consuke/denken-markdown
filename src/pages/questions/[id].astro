@@ -12,6 +12,9 @@ import { safeJson } from '../../lib/safe-json';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import QuestionList from '../../components/QuestionList.astro';
 import { questionDescription, relatedQuestions } from '../../lib/question-info';
+import ArticleList from '../../components/ArticleList.astro';
+import { getVisibleArticles } from '../../lib/articles';
+import { articlesForQuestion } from '../../lib/article-model';
 
 export async function getStaticPaths() {
   return (await getVisibleQuestions()).map((question) => ({
@@ -52,6 +55,7 @@ const payload = safeJson({
   prompt: ai.prompt,
 });
 const related = relatedQuestions(question, await getVisibleQuestions());
+const articles = articlesForQuestion(question.id, await getVisibleArticles());
 ---
 
 <BaseLayout
@@ -116,6 +120,12 @@ const related = relatedQuestions(question, await getVisibleQuestions());
       <section aria-labelledby="knowledge-title">
         <h2 id="knowledge-title">関連知識</h2>
         <div class="prose" set:html={knowledgeHtml} />
+      </section>
+    )}
+    {articles.length > 0 && (
+      <section aria-labelledby="question-articles-title">
+        <h2 id="question-articles-title">この問題を理解するための記事</h2>
+        <ArticleList articles={articles} headingLevel={3} />
       </section>
     )}
     {related.length > 0 && (

@@ -1,0 +1,32 @@
+---
+import type { Article } from '../lib/articles';
+import { articleCategories } from '../lib/taxonomy';
+interface Props {
+  articles: Article[];
+  headingLevel?: 2 | 3;
+  showDescription?: boolean;
+}
+const { articles, headingLevel = 2, showDescription = true } = Astro.props;
+const Heading = headingLevel === 3 ? 'h3' : 'h2';
+---
+
+<ol class="article-list">
+  {articles.map((article) => (
+    <li class="article-entry">
+      <p class="entry-meta">
+        <time datetime={article.data.publishedAt}>
+          {article.data.publishedAt.replaceAll('-', '/')}
+        </time>
+        <a href={'/articles/category/' + article.data.category + '/'}>
+          {articleCategories[article.data.category].label}
+        </a>
+      </p>
+      <Heading>
+        <a href={'/articles/' + article.id + '/'}>{article.data.title}</a>
+      </Heading>
+      {showDescription && (
+        <p class="article-description">{article.data.description}</p>
+      )}
+    </li>
+  ))}
+</ol>

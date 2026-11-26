@@ -1,0 +1,33 @@
+---
+import ArticleIndex from '../../../components/ArticleIndex.astro';
+import { getVisibleArticles, type Article } from '../../../lib/articles';
+import { articleTagGroups } from '../../../lib/article-model';
+import { articleTags, type ArticleTag } from '../../../lib/taxonomy';
+
+export async function getStaticPaths() {
+  return articleTagGroups(await getVisibleArticles()).map(
+    ({ slug, articles, indexable }) => ({
+      params: { tag: slug },
+      props: { tag: slug, articles, indexable },
+    }),
+  );
+}
+interface Props {
+  tag: ArticleTag;
+  articles: Article[];
+  indexable: boolean;
+}
+const { tag, articles, indexable } = Astro.props;
+const { label } = articleTags[tag];
+---
+
+<ArticleIndex
+  title={`「${label}」の記事`}
+  description={`電験二種の学習向けに「${label}」を扱った解説記事の一覧。`}
+  articles={articles}
+  breadcrumbs={[
+    { label: '解説記事', href: '/articles/' },
+    { label: `#${label}` },
+  ]}
+  noindex={!indexable}
+/>

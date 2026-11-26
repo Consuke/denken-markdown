@@ -3,9 +3,14 @@ import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { getVisibleQuestions } from '../../../lib/questions';
 import { questionDiagramFiles } from '../../../lib/question-diagrams';
+import { getVisibleArticles } from '../../../lib/articles';
 
 export async function getStaticPaths() {
-  return questionDiagramFiles(await getVisibleQuestions()).map((image) => ({
+  const [questions, articles] = await Promise.all([
+    getVisibleQuestions(),
+    getVisibleArticles(),
+  ]);
+  return questionDiagramFiles([...questions, ...articles]).map((image) => ({
     params: { image: image.slice(0, -4) },
     props: { image },
   }));

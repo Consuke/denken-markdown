@@ -32,26 +32,46 @@ export function parseMarkdown(markdown: string): Root {
 }
 
 /** H2のAST位置を使い、改行や数式デリミタを再シリアライズせず保持する。 */
+/** raw HTMLと危険なURLプロトコルを拒否する。問題・記事の共通ルール。 */
+function assertSafeNode(node: RootContent | Root): void {
+  if (node.type === 'html') throw new Error('raw HTMLは使用できません');
+  if (
+    node.type === 'link' ||
+    node.type === 'image' ||
+    node.type === 'definition'
+  ) {
+    const url = new URL(node.url, 'https://example.com');
+    if (
+      ![
+        'http:',
+        'https:',
+        ...(node.type === 'image' ? [] : ['mailto:']),
+      ].includes(url.protocol)
+    ) {
+      throw new Error(`使用できないURLプロトコルです: ${url.protocol}`);
+    }
+  }
+}
+
+/** 記事本文を検証してASTを返す。H1はfrontmatterのtitleを使うため禁止。 */
+export function parseArticleBody(markdown: string): Root {
+  const tree = parseMarkdown(markdown);
+  visit(tree, (node) => {
+    assertSafeNode(node);
+    if (node.type === 'heading' && node.depth === 1)
+      throw new Error(
+        'H1はfrontmatterのtitleを使用し、本文はH2から始めてください',
+      );
+  });
+  if (!tree.children.some((node) => node.type !== 'definition'))
+    throw new Error('記事の本文が空です');
+  return tree;
+}
+
 export function extractSections(markdown: string): QuestionSections {
   const tree = parseMarkdown(markdown);
   visit(tree, (node, _index, parent) => {
-    if (node.type === 'html') throw new Error('raw HTMLは使用できません');
-    if (
-      node.type === 'link' ||
-      node.type === 'image' ||
-      node.type === 'definition'
-    ) {
-      const url = new URL(node.url, 'https://example.com');
-      if (
-        ![
-          'http:',
-          'https:',
-          ...(node.type === 'image' ? [] : ['mailto:']),
-        ].includes(url.protocol)
-      ) {
-        throw new Error(`使用できないURLプロトコルです: ${url.protocol}`);
-      }
-    }
+    assertSafeNode(node);
     if (
       node.type === 'heading' &&
       (node.depth === 1 || (node.depth === 2 && parent !== tree))
