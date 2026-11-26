@@ -76,7 +76,9 @@ test('カテゴリ・タグ・分野ページに記事が出る', async ({ page 
   await expect(page.getByRole('heading', { level: 1 })).toHaveText(
     '「交流回路」の記事',
   );
-  await expect(page.locator('.article-entry')).toHaveCount(2);
+  await expect(page.locator('.article-entry')).toHaveCount(
+    articles.filter((entry) => entry.data.tags.includes('ac-circuits')).length,
+  );
   await page.goto('/topics/feedback/');
   await expect(
     page
