@@ -1,4 +1,4 @@
-import type { Root } from 'mdast';
+import type { PhrasingContent, Root } from 'mdast';
 import { visit } from 'unist-util-visit';
 import { toString } from 'mdast-util-to-string';
 
@@ -6,6 +6,8 @@ export interface TocItem {
   depth: 2 | 3;
   id: string;
   text: string;
+  /** 目次に数式を表示するための見出しの中身（複製） */
+  children: PhrasingContent[];
 }
 
 /** 見出しから日本語を残したアンカーIDを作る。 */
@@ -33,7 +35,12 @@ export function addHeadingIds(tree: Root): TocItem[] {
     used.set(base, count);
     const id = count === 1 ? base : `${base}-${count}`;
     node.data = { ...node.data, hProperties: { id } };
-    items.push({ depth: node.depth, id, text });
+    items.push({
+      depth: node.depth,
+      id,
+      text,
+      children: structuredClone(node.children),
+    });
   });
   return items;
 }

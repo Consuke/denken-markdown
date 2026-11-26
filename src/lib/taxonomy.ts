@@ -164,6 +164,7 @@ export const articleTags = {
   'three-phase': { label: '三相交流' },
   'reactive-power': { label: '無効電力' },
   phasor: { label: 'フェーザ' },
+  impedance: { label: 'インピーダンス' },
   transients: { label: '過渡現象' },
   'symmetrical-components': { label: '対称座標法' },
   'fault-calculation': { label: '故障計算' },

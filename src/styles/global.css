@@ -96,6 +96,10 @@ main.shell {
   font-weight: 700;
   text-decoration: none;
 }
+.header-inner nav {
+  display: flex;
+  gap: 0.25rem 1rem;
+}
 .header-inner nav a {
   display: inline-block;
   padding-block: 0.6rem;
@@ -661,8 +665,27 @@ main.shell {
   scroll-margin-top: 1rem;
 }
 .article-body h2 {
+  margin-top: 2.25rem;
   padding-bottom: 0.25rem;
   border-bottom: 1px solid var(--line);
+}
+.article-body h3 {
+  margin: 1.5rem 0 0.25rem;
+  padding-left: 0.6rem;
+  border-left: 3px solid var(--accent);
+  font-size: 1rem;
+  font-weight: 700;
+}
+.article-body blockquote {
+  margin: 1rem 0;
+  padding: 0.5rem 1rem;
+  border-left: 3px solid var(--accent-line);
+  background: var(--accent-soft);
+  color: #333;
+  font-size: 0.9rem;
+}
+.article-body blockquote p {
+  margin: 0;
 }
 .index-description {
   color: #444;

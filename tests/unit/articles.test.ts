@@ -139,7 +139,9 @@ describe('目次とコピー', () => {
     const tree = parseArticleBody(
       '## 交流とは？\n\n本文\n\n### 実効値 $V$\n\n本文\n\n## 交流とは？\n\n本文\n\n#### 対象外\n',
     );
-    expect(addHeadingIds(tree)).toEqual([
+    expect(
+      addHeadingIds(tree).map(({ depth, id, text }) => ({ depth, id, text })),
+    ).toEqual([
       { depth: 2, id: 'h-交流とは', text: '交流とは？' },
       { depth: 3, id: 'h-実効値-v', text: '実効値 V' },
       { depth: 2, id: 'h-交流とは-2', text: '交流とは？' },

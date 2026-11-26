@@ -28,6 +28,19 @@ const { data } = article;
 const tree = parseArticleBody(article.body);
 const toc = addHeadingIds(tree);
 const html = await renderSection({ tree });
+// 見出しの数式をTeXのまま出さないよう、目次の項目も同じ処理でHTMLにする。
+const tocHtml = await Promise.all(
+  toc.map(async (item) =>
+    (
+      await renderSection({
+        tree: {
+          type: 'root',
+          children: [{ type: 'paragraph', children: item.children }],
+        },
+      })
+    ).replace(/^<p>|<\/p>$/g, ''),
+  ),
+);
 // 非公開の問題・記事は本番に出さないため、表示対象だけに絞る。
 const questions = (await getVisibleQuestions()).filter((question) =>
   data.relatedQuestions.includes(question.id),
@@ -87,9 +100,9 @@ const formatDate = (date: string) => date.replaceAll('-', '/');
       <nav class="article-toc" aria-labelledby="toc-title">
         <h2 id="toc-title">目次</h2>
         <ol>
-          {toc.map((item) => (
+          {toc.map((item, index) => (
             <li class={item.depth === 3 ? 'toc-sub' : undefined}>
-              <a href={'#' + item.id}>{item.text}</a>
+              <a href={'#' + item.id} set:html={tocHtml[index]} />
             </li>
           ))}
         </ol>
