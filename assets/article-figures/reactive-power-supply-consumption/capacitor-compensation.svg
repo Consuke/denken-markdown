@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="420" viewBox="0 0 860 420" font-family="'Noto Sans CJK JP', 'Hiragino Kaku Gothic ProN', sans-serif" font-size="16" fill="#222222">
+<rect width="860" height="420" fill="#ffffff"/>
+<text x="24" y="26" font-size="17" font-weight="bold">(a) コンデンサなし</text>
+<circle cx="70" cy="92" r="26" fill="#ffffff" stroke="#222222" stroke-width="2.5"/>
+<path d="M56,92 q7,-12 14,0 t14,0" fill="none" stroke="#222222" stroke-width="2.5"/>
+<text x="70" y="140" font-size="14" text-anchor="middle">電源（系統）</text>
+<line x1="96" y1="92" x2="400" y2="92" stroke="#222222" stroke-width="2.5"/>
+<line x1="400" y1="58" x2="400" y2="126" stroke="#222222" stroke-width="6"/>
+<text x="250" y="52" font-size="15" text-anchor="middle">有効電力 100 kW</text>
+<line x1="150" y1="114" x2="338" y2="114" stroke="#175ca0" stroke-width="4"/>
+<polygon points="350,114 335,107.7 335,120.3" fill="#175ca0"/>
+<text x="250" y="78" font-size="16" font-weight="bold" text-anchor="middle" fill="#175ca0">遅れ無効電力 75 kvar</text>
+<text x="250" y="150" font-size="14" text-anchor="middle" fill="#606060">線路は 125 kV·A を送る（力率 0.8）</text>
+<line x1="400" y1="92" x2="470" y2="92" stroke="#222222" stroke-width="2.5"/>
+<rect x="470" y="60" width="230" height="64" rx="8" fill="#ffffff" stroke="#d9480f" stroke-width="2.5"/>
+<text x="585" y="87.5" text-anchor="middle" font-size="15">誘導性負荷（モーターなど）</text>
+<text x="585" y="108.5" text-anchor="middle" font-size="14">100 kW・遅れ 75 kvar を消費</text>
+<line x1="16" y1="186" x2="844" y2="186" stroke="#d6d6d6"/>
+<text x="24" y="216" font-size="17" font-weight="bold">(b) コンデンサあり</text>
+<circle cx="70" cy="282" r="26" fill="#ffffff" stroke="#222222" stroke-width="2.5"/>
+<path d="M56,282 q7,-12 14,0 t14,0" fill="none" stroke="#222222" stroke-width="2.5"/>
+<text x="70" y="330" font-size="14" text-anchor="middle">電源（系統）</text>
+<line x1="96" y1="282" x2="400" y2="282" stroke="#222222" stroke-width="2.5"/>
+<line x1="400" y1="248" x2="400" y2="406" stroke="#222222" stroke-width="6"/>
+<text x="250" y="242" font-size="15" text-anchor="middle">有効電力 100 kW</text>
+<text x="250" y="268" font-size="16" font-weight="bold" text-anchor="middle" fill="#175ca0">遅れ無効電力 0 kvar</text>
+<text x="250" y="340" font-size="14" text-anchor="middle" fill="#606060">線路は 100 kV·A だけ送ればよい（力率 1）</text>
+<line x1="400" y1="282" x2="470" y2="282" stroke="#222222" stroke-width="2.5"/>
+<rect x="470" y="250" width="230" height="64" rx="8" fill="#ffffff" stroke="#d9480f" stroke-width="2.5"/>
+<text x="585" y="277.5" text-anchor="middle" font-size="15">誘導性負荷（モーターなど）</text>
+<text x="585" y="298.5" text-anchor="middle" font-size="14">100 kW・遅れ 75 kvar を消費</text>
+<line x1="400" y1="372" x2="470" y2="372" stroke="#222222" stroke-width="2.5"/>
+<rect x="470" y="340" width="230" height="64" rx="8" fill="#ffffff" stroke="#2b8a3e" stroke-width="2.5"/>
+<text x="585" y="367.5" text-anchor="middle" font-size="15">電力用コンデンサ</text>
+<text x="585" y="388.5" text-anchor="middle" font-size="14">遅れ 75 kvar を供給</text>
+<path d="M700,372 H724 V282" fill="none" stroke="#175ca0" stroke-width="4" stroke-linejoin="round"/>
+<line x1="726" y1="282" x2="713" y2="282" stroke="#175ca0" stroke-width="4"/>
+<polygon points="701,282 716,288.3 716,275.7" fill="#175ca0"/>
+<text x="736" y="323" font-size="15" font-weight="bold" fill="#175ca0">遅れ 75 kvar</text>
+<text x="736" y="343" font-size="15" font-weight="bold" fill="#175ca0">をその場で供給</text>
+</svg>
