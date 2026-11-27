@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="470" viewBox="0 0 560 470" font-family="'Noto Sans CJK JP', 'Hiragino Kaku Gothic ProN', sans-serif" font-size="16" fill="#222222">
+<rect width="560" height="470" fill="#ffffff"/>
+<line x1="30" y1="240" x2="462" y2="240" stroke="#8a8a8a" stroke-width="1.5"/>
+<polygon points="470,240 460,235.8 460,244.2" fill="#8a8a8a"/>
+<line x1="230" y1="450" x2="230" y2="34" stroke="#8a8a8a" stroke-width="1.5"/>
+<polygon points="230,26 225.8,36 234.2,36" fill="#8a8a8a"/>
+<text x="474" y="246" font-size="20"><tspan font-family="'Liberation Serif', 'Times New Roman', serif" font-style="italic">x</tspan></text>
+<text x="240" y="34" font-size="20"><tspan font-family="'Liberation Serif', 'Times New Roman', serif" font-style="italic">y</tspan></text>
+<circle cx="230" cy="240" r="170" fill="none" stroke="#8a8a8a" stroke-width="1.5"/>
+<text x="222" y="260" font-family="'Liberation Serif', 'Times New Roman', serif" font-style="italic" font-size="18" text-anchor="end">O</text>
+<text x="406" y="262" font-family="'Liberation Serif', 'Times New Roman', serif" font-size="17">1</text>
+<text x="54" y="262" font-family="'Liberation Serif', 'Times New Roman', serif" font-size="17" text-anchor="end">−1</text>
+<text x="222" y="64" font-family="'Liberation Serif', 'Times New Roman', serif" font-size="17" text-anchor="end">1</text>
+<text x="222" y="430" font-family="'Liberation Serif', 'Times New Roman', serif" font-size="17" text-anchor="end">−1</text>
+<path d="M346.23,240 L346.23,226 L360.23,226" fill="none" stroke="#8a8a8a" stroke-width="1.5"/>
+<line x1="230" y1="240" x2="360.23" y2="240" stroke="#2b8a3e" stroke-width="5"/>
+<line x1="360.23" y1="240" x2="360.23" y2="130.73" stroke="#d9480f" stroke-width="5"/>
+<line x1="230" y1="240" x2="360.23" y2="130.73" stroke="#175ca0" stroke-width="3"/>
+<path d="M272,240 A42,42 0 0 0 262.17,213" fill="none" stroke="#222222" stroke-width="1.5"/>
+<text x="286.38" y="225.48" font-size="19" text-anchor="middle"><tspan font-family="'Liberation Serif', 'Times New Roman', serif" font-style="italic">θ</tspan></text>
+<text x="281.11" y="177.36" font-family="'Liberation Serif', 'Times New Roman', serif" font-size="18" fill="#175ca0" text-anchor="end">1</text>
+<text x="295.11" y="268" font-size="18" text-anchor="middle" fill="#2b8a3e" font-family="'Liberation Serif', 'Times New Roman', serif">cos <tspan font-family="'Liberation Serif', 'Times New Roman', serif" font-style="italic">θ</tspan></text>
+<text x="350.23" y="199.36" font-size="18" text-anchor="end" fill="#d9480f" font-family="'Liberation Serif', 'Times New Roman', serif">sin <tspan font-family="'Liberation Serif', 'Times New Roman', serif" font-style="italic">θ</tspan></text>
+<circle cx="360.23" cy="130.73" r="5.5" fill="#222222"/>
+<text x="370.23" y="118.73" font-size="18" font-family="'Liberation Serif', 'Times New Roman', serif">(cos <tspan font-family="'Liberation Serif', 'Times New Roman', serif" font-style="italic">θ</tspan>, sin <tspan font-family="'Liberation Serif', 'Times New Roman', serif" font-style="italic">θ</tspan>)</text>
+</svg>

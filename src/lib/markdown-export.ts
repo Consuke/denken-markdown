@@ -2,6 +2,7 @@ import { unified } from 'unified';
 import remarkParse from 'remark-parse';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
+import remarkCjkFriendly from 'remark-cjk-friendly';
 import { visit } from 'unist-util-visit';
 import { toString } from 'mdast-util-to-string';
 import type { Root, RootContent } from 'mdast';
@@ -23,10 +24,13 @@ export type QuestionSections = { question: MarkdownSection } & Partial<
   Record<'answer' | 'explanation' | 'knowledge', MarkdownSection>
 >;
 
+/** remarkCjkFriendly: 「**位相（タイミング）**が」のように、全角括弧の直後に
+ * 和文が続く強調もCommonMarkの区切り規則で取りこぼさずに解釈する。 */
 export function parseMarkdown(markdown: string): Root {
   return unified()
     .use(remarkParse)
     .use(remarkGfm)
+    .use(remarkCjkFriendly)
     .use(remarkMath)
     .parse(markdown);
 }

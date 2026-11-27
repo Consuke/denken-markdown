@@ -174,7 +174,7 @@ npm run test:e2e
 
 Linuxで必要なら`npm run browsers:install -- --with-deps`を使用。ブラウザはプロジェクト内の`node_modules`に保存します。E2Eは`dist-preview/`をビルドし、専用サーバーをポート4322で起動・終了します。開発サーバーの4321と並行して実行できます。
 
-Prettierはコピー原文の意図しない変更を避けるため、問題と記事のMarkdownを整形対象から除外しています。内容検証は別途必須です。OGP画像の原稿は`assets/og.svg`。ブラウザ導入後に`npm run generate:og`で`public/og.png`を再生成できます。
+Prettierはコピー原文の意図しない変更を避けるため、問題と記事のMarkdownを整形対象から除外しています。内容検証は別途必須です。OGP画像の原稿は`assets/og.svg`。ブラウザ導入後に`npm run generate:og`で`public/og.png`を再生成できます。解説記事の図のSVG原稿は`assets/article-figures/<記事ID>/`にあり、`npm run generate:figures`で`src/assets/article-images/<記事ID>/`のPNGを再生成できます。
 
 ## 実装範囲と判断
 

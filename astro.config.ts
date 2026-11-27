@@ -1,6 +1,7 @@
 import { defineConfig } from 'astro/config';
 import { unified } from '@astrojs/markdown-remark';
 import remarkMath from 'remark-math';
+import remarkCjkFriendly from 'remark-cjk-friendly';
 import rehypeKatex from 'rehype-katex';
 import sitemap from '@astrojs/sitemap';
 import { loadEnv } from 'vite';
@@ -36,7 +37,7 @@ export default defineConfig({
   compressHTML: false,
   markdown: {
     processor: unified({
-      remarkPlugins: [remarkMath, remarkFormulaSources],
+      remarkPlugins: [remarkCjkFriendly, remarkMath, remarkFormulaSources],
       rehypePlugins: [[rehypeKatex, katexOptions], rehypeAssertMath],
     }),
   },

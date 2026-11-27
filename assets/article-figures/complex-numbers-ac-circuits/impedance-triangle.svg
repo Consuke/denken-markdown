@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="330" viewBox="0 0 520 330" font-family="'Noto Sans CJK JP', 'Hiragino Kaku Gothic ProN', sans-serif" font-size="16" fill="#222222">
+<rect width="520" height="330" fill="#ffffff"/>
+<path d="M296,260 L296,246 L310,246" fill="none" stroke="#8a8a8a" stroke-width="1.5"/>
+<line x1="90" y1="260" x2="310" y2="260" stroke="#175ca0" stroke-width="4"/>
+<line x1="310" y1="260" x2="310" y2="40" stroke="#d9480f" stroke-width="4"/>
+<line x1="90" y1="260" x2="310" y2="40" stroke="#222222" stroke-width="4"/>
+<path d="M148,260 A58,58 0 0 0 131.01,218.99" fill="none" stroke="#222222" stroke-width="1.5"/>
+<text x="182.39" y="227.73" font-size="17" text-anchor="middle"><tspan font-family="'Liberation Serif', 'Times New Roman', serif" font-style="italic">θ</tspan> = 45°</text>
+<text x="200" y="290" font-size="18" text-anchor="middle" fill="#175ca0"><tspan font-family="'Liberation Serif', 'Times New Roman', serif" font-style="italic">R</tspan> = 5 Ω</text>
+<text x="200" y="312" font-size="14" text-anchor="middle" fill="#175ca0">（実部：抵抗）</text>
+<text x="324" y="150" font-size="18" fill="#d9480f"><tspan font-family="'Liberation Serif', 'Times New Roman', serif" font-style="italic">X</tspan> = 5 Ω</text>
+<text x="324" y="172" font-size="14" fill="#d9480f">（虚部：リアクタンス）</text>
+<text x="184" y="136" font-size="18" font-weight="bold" text-anchor="end">|<tspan font-family="'Liberation Serif', 'Times New Roman', serif" font-style="italic">Z</tspan>| = 5<tspan font-family="'DejaVu Sans', sans-serif">√</tspan><tspan text-decoration="overline">2</tspan> Ω</text>
+</svg>

@@ -22,6 +22,7 @@
     "test:e2e": "npm run build:preview && cross-env PLAYWRIGHT_BROWSERS_PATH=0 playwright test",
     "browsers:install": "cross-env PLAYWRIGHT_BROWSERS_PATH=0 playwright install chromium webkit",
     "generate:og": "cross-env PLAYWRIGHT_BROWSERS_PATH=0 node scripts/generate-og.mjs",
+    "generate:figures": "cross-env PLAYWRIGHT_BROWSERS_PATH=0 node scripts/generate-article-figures.mjs",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
   },
@@ -37,6 +38,7 @@
     "mdast-util-to-string": "4.0.0",
     "rehype-katex": "7.0.1",
     "rehype-stringify": "10.0.1",
+    "remark-cjk-friendly": "2.3.4",
     "remark-gfm": "4.0.1",
     "remark-math": "6.0.0",
     "remark-parse": "11.0.0",

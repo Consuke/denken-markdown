@@ -59,5 +59,7 @@ draft: true
 - 数式は `$...$` と `$$` ブロック。KaTeXのエラーはビルド失敗になる。
 - raw HTMLは使えない。
 - 記事専用の画像は `src/assets/article-images/<slug>/<name>.png` に置き、`![説明](/diagrams/articles/<slug>/<name>.png)` で参照する（PNGのみ）。過去問の図 `/diagrams/questions/...` も参照できる。
+- 図をSVGで描く場合は原稿を `assets/article-figures/<slug>/<name>.svg` に置き、`npm run generate:figures`（特定記事だけなら `npm run generate:figures -- <slug>`）で同名のPNG（2倍解像度）を `src/assets/article-images/<slug>/` に生成する。SVG原稿とPNGの両方をコミットする。
+- 強調 `**…**` は「**位相（タイミング）**が」のように全角記号の直後に和文が続いても太字になる（remark-cjk-friendly）。
 - 過去問へのリンクは `/questions/<問題ID>/`。非公開の問題へのリンクは内部リンク検証で失敗する。
 - 数式・導出・電気的な説明は、公開前に必ず人が確認する。

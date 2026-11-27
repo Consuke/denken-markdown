@@ -42,6 +42,19 @@ describe('数式原文と安全なHTML', () => {
     expect($('img').length).toBe(0);
     expect(JSON.parse($('#payload').text())).toEqual(value);
   });
+  it('全角括弧や数式で終わる強調の直後に和文が続いても太字にする', async () => {
+    const html = await renderSection(
+      extractSections(
+        document(
+          '**位相（波形のタイミング）**が重要。**$j$ を掛ける**んです。',
+        ),
+      ).question,
+    );
+    const $ = load(html);
+    expect($('strong').length).toBe(2);
+    expect($('strong').first().text()).toBe('位相（波形のタイミング）');
+    expect($('p').text()).not.toContain('*');
+  });
   it('コードブロック内の$式$は数式として扱わない', async () => {
     const html = await renderSection(
       extractSections(document('```txt\n$not_math$\n```')).question,
