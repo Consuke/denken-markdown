@@ -1,4 +1,4 @@
-import { subjects, type Subject } from './taxonomy';
+import { examStages, subjects, type Subject } from './taxonomy';
 
 /**
  * 解説を依頼するAIサービス。`?q=`で入力欄にプロンプトを渡す。
@@ -44,10 +44,15 @@ export function buildAiPrompt(input: AiPromptInput, origin: string): string {
     ? absolutizeImages(input.answer, origin).trim()
     : undefined;
   const hasImages = /!\[[^\]]*\]\(/.test(question + (answer ?? ''));
+  const stage = subjects[input.subject].stage;
+  // 一次試験は解答群から選ぶ形式で、公式解答は記号だけ。二次試験は公式標準解答。
+  const answerName = stage === 'primary' ? '公式解答' : '公式標準解答';
   const requests = [
-    '考え方・使う公式・計算過程を順に説明してください。',
+    stage === 'primary'
+      ? '各空欄について、考え方・使う公式・計算過程を順に説明し、解答群から正しい選択肢を選ぶ理由と、紛らわしい選択肢が誤りである理由を示してください。'
+      : '考え方・使う公式・計算過程を順に説明してください。',
     answer
-      ? '公式標準解答を正として、各ステップの理由を補足してください。'
+      ? `${answerName}を正として、各ステップの理由を補足してください。`
       : '公式解答は添付していません。解答を作成し、計算は検算してください。',
     '数式はLaTeXで書き、最後に間違えやすい点をまとめてください。',
     ...(hasImages
@@ -57,7 +62,7 @@ export function buildAiPrompt(input: AiPromptInput, origin: string): string {
       : []),
   ];
   return [
-    '電験二種 二次試験の過去問を解説してください。',
+    `電験二種 ${examStages[stage].label}の過去問を解説してください。`,
     ...requests.map((line) => `- ${line}`),
     '',
     `出題：${input.title}（${subjects[input.subject].label}）`,
@@ -66,7 +71,7 @@ export function buildAiPrompt(input: AiPromptInput, origin: string): string {
     '# 問題',
     '',
     question,
-    ...(answer ? ['', '# 公式標準解答', '', answer] : []),
+    ...(answer ? ['', `# ${answerName}`, '', answer] : []),
     '',
   ].join('\n');
 }

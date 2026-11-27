@@ -1,6 +1,6 @@
 export const siteName = '電験二種 過去問・解説';
 export const defaultDescription =
-  '電験二種・二次試験の過去問と公式解答を、ChatGPT・Claudeでそのまま解説させられる形で掲載。数式はLaTeXで収録。非公式サイトです。';
+  '電験二種（一次試験・二次試験）の過去問と公式解答を、ChatGPT・Claudeでそのまま解説させられる形で掲載。数式はLaTeXで収録。非公式サイトです。';
 
 export function siteOrigin(value = 'https://example.com'): string {
   const url = new URL(value);

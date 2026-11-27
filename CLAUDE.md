@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project
 
-A static Astro 7 site that publishes 電験二種 (secondary stage) exam questions, official answers and original explanations. Each question is one Markdown file (one 大問 per file). Deployed to Cloudflare Pages as plain static HTML (`dist/`). There is no SSR, database or auth. The docs (README, TODO.md, docs/) and all UI strings are in Japanese.
+A static Astro 7 site that publishes 電験二種 exam questions (secondary stage, and primary stage in progress), official answers and original explanations. Each question is one Markdown file (one 大問 per file). Deployed to Cloudflare Pages as plain static HTML (`dist/`). There is no SSR, database or auth. The docs (README, TODO.md, docs/) and all UI strings are in Japanese.
 
 Node 24.13.0 (`.node-version`), npm ≥ 11. Dependencies are pinned exactly, and `katex` is forced to a single version through `overrides`. Keep it that way, because math validation relies on rehype-katex and direct KaTeX checks using the same version.
 
@@ -50,7 +50,7 @@ Always build through the npm scripts and never call `astro build` directly. Runn
 
 ## Adding / editing questions
 
-- Filenames are lowercase ASCII slugs such as `2026-secondary-power-management-q01.md`. `subject` is `power-management` or `machine-control`, and `examStage` is `secondary`. The combination of year, stage, subject, questionNumber and partNumber must be unique within real questions and, separately, within samples.
+- Filenames are lowercase ASCII slugs such as `2026-secondary-power-management-q01.md` or `2026-primary-theory-q01.md`. Each subject in `src/lib/taxonomy.ts` has a `stage`: `theory` / `power` / `machine` / `law` are `primary`, `power-management` / `machine-control` are `secondary`, and the schema requires `examStage` to match. Subject and topic pages (and their links in `BrowseFilters`) are emitted only when they have visible questions. The combination of year, stage, subject, questionNumber and partNumber must be unique within real questions and, separately, within samples.
 - `sourceName` and an HTTPS `sourceUrl` are required. `answerSourceUrl` is set when an official answer is transcribed. Dates are quoted `YYYY-MM-DD`, with `publishedAt ≤ updatedAt` and no future dates (JST).
 - After changing the schema or taxonomy, restart `npm run dev`.
 - Provenance for the PDF imports is in `docs/imports/*.json` (page/figure manifests with SHA-256 values) and in `docs/IMPORT-2017-2025.md` and `docs/IMPORT-2026.md`. `tests/unit/archive-import.test.ts` and `tests/unit/pdf-import.test.ts` check the content files against these manifests.
@@ -60,5 +60,6 @@ Always build through the npm scripts and never call `astro build` directly. Runn
 - The three fictional `sample-*.md` question files are fixtures for `content.test.ts` and `navigation.test.ts`, and the two `src/content/articles/sample-*.md` files are fixtures for `articles.test.ts` and `tests/e2e/articles.spec.ts`. Do not delete them.
 - One real article is published (`complex-numbers-ac-circuits`).
 - Local E2E: Astro auto-backgrounds `astro preview` when it detects an AI agent, which makes Playwright's webServer exit early. Run with `env -u CLAUDECODE -u CLAUDE_CODE_ENTRYPOINT -u AI_AGENT CI=1 PLAYWRIGHT_BROWSERS_PATH=0 npx playwright test` after `npm run build:preview`.
-- All 140 real questions (2013–2026) are `published`. The import tests (`archive-import.test.ts`, `pdf-import.test.ts`) assert this for 2017–2026.
+- All 140 real secondary questions (2013–2026) are `published`. The import tests (`archive-import.test.ts`, `pdf-import.test.ts`) assert this for 2017–2026.
+- Primary stage: 2026 is imported and `published` (30 files, see `docs/IMPORT-PRIMARY-2026.md`). Blanks are written `［(1)］`, the answer group is `### 問Nの解答群`, and `## 解答` lists the official symbol plus the option text. The official site lists primary PDFs only for 2019–2026; older years need user-supplied PDFs. The PDFs' text layer drops Ω/Greek glyphs from CenturyOldstyle, so check math-heavy pages against page images.
 - 2013–2016 (see `docs/IMPORT-2013-2016.md`) have no `docs/imports/*.json` manifest and no import test. They were published before a full check against the original PDFs.

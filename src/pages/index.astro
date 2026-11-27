@@ -4,11 +4,16 @@ import BrowseFilters from '../components/BrowseFilters.astro';
 import { getVisibleQuestions } from '../lib/questions';
 import { extractSections } from '../lib/markdown-export';
 import ArticleList from '../components/ArticleList.astro';
+import { examStages, examStageSlugs } from '../lib/taxonomy';
 import { getVisibleArticles } from '../lib/articles';
 const questions = await getVisibleQuestions();
 const articles = await getVisibleArticles();
 const real = questions.filter((question) => !question.data.sample);
 const years = real.map((question) => question.data.year);
+const stageLabel = examStageSlugs
+  .filter((stage) => real.some((question) => question.data.examStage === stage))
+  .map((stage) => examStages[stage].label)
+  .join('・');
 const answerYears = real
   .filter((question) => extractSections(question.body ?? '').answer)
   .map((question) => question.data.year);
@@ -25,7 +30,7 @@ const range = (values: number[]) =>
     <section class="hero" aria-labelledby="hero-title">
       {real.length > 0 && (
         <p class="hero-eyebrow">
-          電験二種 二次試験・{range(years)}・{real.length}問
+          電験二種 {stageLabel}・{range(years)}・{real.length}問
         </p>
       )}
       <h1 id="hero-title">過去問を、そのままAIに解説させる。</h1>
@@ -71,7 +76,7 @@ const range = (values: number[]) =>
         <li>
           <strong>公式解答つき</strong>
           <span>
-            {`${range(answerYears)}は公式標準解答を収録。AIは正解に沿って解説します。`}
+            {`${range(answerYears)}は公式解答（二次試験は公式標準解答）を収録。AIは正解に沿って解説します。`}
           </span>
         </li>
         <li>

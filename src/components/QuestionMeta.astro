@@ -1,6 +1,6 @@
 ---
 import type { Question } from '../lib/questions';
-import { subjects, topics } from '../lib/taxonomy';
+import { examStages, subjects, topics } from '../lib/taxonomy';
 interface Props {
   question: Question;
 }
@@ -11,7 +11,7 @@ const { data } = Astro.props.question;
   <p class="meta-line">
     <a href={'/years/' + data.year + '/'}>{data.year}年度</a>
     <a href={'/subjects/' + data.subject + '/'}>
-      {subjects[data.subject].label}
+      {examStages[data.examStage].label} {subjects[data.subject].label}
     </a>
     <span>
       問{data.questionNumber}

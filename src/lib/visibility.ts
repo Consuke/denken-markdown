@@ -1,4 +1,5 @@
 import type { QuestionData } from './schema';
+import { subjectOrder } from './taxonomy';
 
 export function isPublicQuestion(
   data: Pick<QuestionData, 'reviewStatus' | 'sample'>,
@@ -19,7 +20,7 @@ export function sortQuestions<T extends { id: string; data: QuestionData }>(
   return [...entries].sort(
     (a, b) =>
       b.data.year - a.data.year ||
-      a.data.subject.localeCompare(b.data.subject, 'en') ||
+      subjectOrder(a.data.subject) - subjectOrder(b.data.subject) ||
       a.data.questionNumber - b.data.questionNumber ||
       (a.data.partNumber ?? '').localeCompare(b.data.partNumber ?? '', 'en', {
         numeric: true,

@@ -7,14 +7,17 @@ import { articlesForTopic } from '../../lib/article-model';
 export async function getStaticPaths() {
   const all = await getVisibleQuestions();
   const articles = await getVisibleArticles();
-  return topicSlugs.map((topic) => ({
-    params: { topic },
-    props: {
-      topic,
-      questions: all.filter((entry) => entry.data.topics.includes(topic)),
-      articles: articlesForTopic(topic, articles, all),
-    },
-  }));
+  // 表示対象の問題がない分野はページを出さない。
+  return topicSlugs
+    .map((topic) => ({
+      params: { topic },
+      props: {
+        topic,
+        questions: all.filter((entry) => entry.data.topics.includes(topic)),
+        articles: articlesForTopic(topic, articles, all),
+      },
+    }))
+    .filter(({ props }) => props.questions.length > 0);
 }
 interface Props {
   topic: Topic;

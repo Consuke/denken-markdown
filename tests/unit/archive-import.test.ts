@@ -34,7 +34,8 @@ const manifests: YearManifest[] = await Promise.all(
   ),
 );
 const entries = (await readQuestionSources()).filter(
-  ({ data }) => !data.sample && years.includes(data.year),
+  ({ data }) =>
+    !data.sample && data.examStage === 'secondary' && years.includes(data.year),
 );
 
 describe('2017〜2025年度の問題・公式解答の取り込み', () => {

@@ -200,6 +200,14 @@ main.shell {
   display: inline-block;
   padding-block: 0.4rem;
 }
+.browse-filters .stage-label {
+  flex-basis: 100%;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.browse-filters ul + ul {
+  margin-top: 0.4rem;
+}
 .all-questions {
   margin-top: 2rem;
 }

@@ -74,6 +74,7 @@ describe('コンテンツの品質', () => {
     { subject: 'unknown' },
     { topics: ['unknown'] },
     { examStage: 'primary' },
+    { examStage: 'secondary', subject: 'theory' },
     { publishedAt: '2026-02-30' },
     { updatedAt: '9999-12-31' },
     { publishedAt: '2026-11-18', updatedAt: '2026-11-17' },
@@ -146,10 +147,10 @@ describe('公開制御とソート', () => {
     ]);
     expect(selectVisibleQuestions(entries, true)).toHaveLength(3);
   });
-  it('年度降順・科目・問題番号順で安定して並べる', () => {
+  it('年度降順・科目（taxonomyの順）・問題番号順で安定して並べる', () => {
     expect(sortQuestions(entries).map((entry) => entry.id)).toEqual([
-      'sample-feedback',
       'sample-transformers',
+      'sample-feedback',
       'sample-transmission',
     ]);
   });

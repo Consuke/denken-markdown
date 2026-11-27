@@ -3,6 +3,8 @@ import {
   articleCategories,
   articleTags,
   slugForLabel,
+  examStageSlugs,
+  subjects,
   subjectSlugs,
   topicSlugs,
   type ArticleCategory,
@@ -26,7 +28,7 @@ export const questionSchema = z
   .strictObject({
     title: z.string().trim().min(1).max(150),
     year: z.number().int().min(1900).max(9999),
-    examStage: z.enum(['primary', 'secondary']),
+    examStage: z.enum(examStageSlugs),
     subject: z.enum(subjectSlugs),
     questionNumber: z.number().int().positive(),
     partNumber: z.string().trim().min(1).optional(),
@@ -51,8 +53,11 @@ export const questionSchema = z
   .superRefine((data, context) => {
     const issue = (path: string, message: string) =>
       context.addIssue({ code: 'custom', path: [path], message });
-    if (data.examStage !== 'secondary')
-      issue('examStage', 'MVPの科目は二次試験専用です。一次試験は未対応です');
+    if (subjects[data.subject].stage !== data.examStage)
+      issue(
+        'examStage',
+        `科目${data.subject}は${data.examStage}の科目ではありません`,
+      );
     if (data.publishedAt > data.updatedAt)
       issue('updatedAt', '公開日以降の日付を指定してください');
     if (data.updatedAt > todayInJapan())

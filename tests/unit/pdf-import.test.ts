@@ -7,7 +7,10 @@ import { questionDiagramFiles } from '../../src/lib/question-diagrams';
 import { isPublicQuestion } from '../../src/lib/visibility';
 
 const entries = (await readQuestionSources()).filter(
-  (entry) => entry.data.year === 2026 && !entry.data.sample,
+  (entry) =>
+    entry.data.year === 2026 &&
+    !entry.data.sample &&
+    entry.data.examStage === 'secondary',
 );
 
 describe('2026年度PDFの取り込み', () => {
@@ -35,7 +38,9 @@ describe('2026年度PDFの取り込み', () => {
         (node) => node.type === 'heading' && node.depth === 3,
       );
       expect(headings).toHaveLength(
-        parts[entry.data.subject][entry.data.questionNumber - 1]!,
+        parts[entry.data.subject as keyof typeof parts][
+          entry.data.questionNumber - 1
+        ]!,
       );
     }
   });

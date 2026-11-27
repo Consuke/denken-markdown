@@ -1,6 +1,6 @@
 ---
 import type { Question } from '../lib/questions';
-import { subjects, topics } from '../lib/taxonomy';
+import { examStages, subjects, topics } from '../lib/taxonomy';
 interface Props {
   questions: Question[];
   emptyMessage?: string;
@@ -20,7 +20,10 @@ const Heading = headingLevel === 3 ? 'h3' : 'h2';
       <li class="question-entry">
         <p class="entry-meta">
           <span>{question.data.year}年度</span>
-          <span>{subjects[question.data.subject].label}</span>
+          <span>
+            {examStages[question.data.examStage].label}{' '}
+            {subjects[question.data.subject].label}
+          </span>
           <span>
             問{question.data.questionNumber}
             {question.data.partNumber && ' (' + question.data.partNumber + ')'}
