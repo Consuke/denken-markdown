@@ -40,6 +40,18 @@
 | 法規 | [20240818_ch_second_q04.pdf](https://www.shiken.or.jp/chief/upload/20240818_ch_second_q04.pdf) | 12       | `1AF85AEF68C88A9CD53793336AE5E93B100575FF3A11C8859CE514B0605907B3` |
 | 解答 | [20240818_ch_second_a01.pdf](https://www.shiken.or.jp/chief/upload/20240818_ch_second_a01.pdf) | 1        | `22629AB78519128D5280F6F0A2F40E129514F870AFFE23F0AAEF5BE4BC636D29` |
 
+## 2023年度（令和5年度，2023-08-19実施）
+
+2026-11-28取り込み。図13点。
+
+| 科目 | ファイル                                                                                       | ページ数 | SHA-256                                                            |
+| ---- | ---------------------------------------------------------------------------------------------- | -------- | ------------------------------------------------------------------ |
+| 理論 | [20230819_ch_second_q01.pdf](https://www.shiken.or.jp/chief/upload/20230819_ch_second_q01.pdf) | 19       | `C4CB8F626A37254DDDB5FE18C60ED3BD3945B8E51709C6F02CC5404118AF04DE` |
+| 電力 | [20230819_ch_second_q02.pdf](https://www.shiken.or.jp/chief/upload/20230819_ch_second_q02.pdf) | 10       | `9A7EA3742DA60B5BEA70E2B684844FFD4FE4837DC50FDA06A81DECA1D3903A5E` |
+| 機械 | [20230819_ch_second_q03.pdf](https://www.shiken.or.jp/chief/upload/20230819_ch_second_q03.pdf) | 17       | `FE5070F28DCBF2CF5BDF15E64409EC259AC85CBEEBB86A75564D6A2656EB1EF7` |
+| 法規 | [20230819_ch_second_q04.pdf](https://www.shiken.or.jp/chief/upload/20230819_ch_second_q04.pdf) | 13       | `EFEED1B975D78ECD1D63B97072363DD7A7281590F1BC4A1D8D4952FA030CCF79` |
+| 解答 | [20230819_ch_second_a01.pdf](https://www.shiken.or.jp/chief/upload/20230819_ch_second_a01.pdf) | 1        | `DFECFE5BA60FBD2816E3E99EAFD8A267E5514DEF64D7A50C1D63D615F34BC45D` |
+
 ## ファイル
 
 `src/content/questions/<year>-primary-<subject>-q<NN>.md`（subjectは `theory` / `power` / `machine` / `law`）。各ファイルの `sourceUrl` に原本PDFのページ、`sourceNote` に冊子ページを記録しています。図は原本から切り出したPNGで `src/assets/question-diagrams/<year>/<year>-primary-*.png`。
