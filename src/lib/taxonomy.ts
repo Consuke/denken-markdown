@@ -218,6 +218,14 @@ export const topics = {
     label: '電子回路・半導体',
     description: '電験二種の半導体素子・演算増幅器などの電子回路に関する問題。',
   },
+  'geothermal-generation': {
+    label: '地熱発電',
+    description: '電験二種の地熱発電に関する問題。',
+  },
+  information: {
+    label: '情報',
+    description: '電験二種の情報処理・ネットワーク・論理回路に関する問題。',
+  },
 } as const;
 
 export type Subject = keyof typeof subjects;
