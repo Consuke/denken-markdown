@@ -4,18 +4,6 @@
 
 [試験センターの公開一覧](https://www.shiken.or.jp/chief/second/qa/)で公開されている一次試験は2020〜2026年度です（2019年度以前は一覧になく，ユーザー提供のPDFが必要）。
 
-## 2025年度（令和7年度，2025-08-31実施）
-
-2026-11-28取り込み。図13点。
-
-| 科目 | ファイル                                                                                       | ページ数 | SHA-256                                                            |
-| ---- | ---------------------------------------------------------------------------------------------- | -------- | ------------------------------------------------------------------ |
-| 理論 | [20250831_ch_second_q01.pdf](https://www.shiken.or.jp/chief/upload/20250831_ch_second_q01.pdf) | 19       | `E3049EC5259DCD24F3CD8A6052AD71FB0A6C9008D12561CFBA82F9C5D2E75A16` |
-| 電力 | [20250831_ch_second_q02.pdf](https://www.shiken.or.jp/chief/upload/20250831_ch_second_q02.pdf) | 10       | `FCF1BC55CE798E3A26FB4D37DE69AD4512BED6292DAB452672F41A262D5F15F5` |
-| 機械 | [20250831_ch_second_q03.pdf](https://www.shiken.or.jp/chief/upload/20250831_ch_second_q03.pdf) | 18       | `29A39AA95895E7F6B089ADC9CFC6C2D36EC9EDBDCADF84A7459586A438C957CF` |
-| 法規 | [20250831_ch_second_q04.pdf](https://www.shiken.or.jp/chief/upload/20250831_ch_second_q04.pdf) | 15       | `C7F26F319A74FA283770DEE777E8DAC5CF86824FB93433F8595CD2900E50B609` |
-| 解答 | [20250831_ch_second_a01.pdf](https://www.shiken.or.jp/chief/upload/20250831_ch_second_a01.pdf) | 1        | `1FACC27C2AE522CF40DEC746E16EC4F9C72C90B04A39CE52F73F6F194B143263` |
-
 ## 2026年度（令和8年度，2026-08-30実施）
 
 | 科目 | ファイル                                                                                       | ページ数 | SHA-256                                                            |
@@ -28,6 +16,30 @@
 
 2026-11-28取り込み。図14点。
 
+## 2025年度（令和7年度，2025-08-31実施）
+
+2026-11-28取り込み。図13点。
+
+| 科目 | ファイル                                                                                       | ページ数 | SHA-256                                                            |
+| ---- | ---------------------------------------------------------------------------------------------- | -------- | ------------------------------------------------------------------ |
+| 理論 | [20250831_ch_second_q01.pdf](https://www.shiken.or.jp/chief/upload/20250831_ch_second_q01.pdf) | 19       | `E3049EC5259DCD24F3CD8A6052AD71FB0A6C9008D12561CFBA82F9C5D2E75A16` |
+| 電力 | [20250831_ch_second_q02.pdf](https://www.shiken.or.jp/chief/upload/20250831_ch_second_q02.pdf) | 10       | `FCF1BC55CE798E3A26FB4D37DE69AD4512BED6292DAB452672F41A262D5F15F5` |
+| 機械 | [20250831_ch_second_q03.pdf](https://www.shiken.or.jp/chief/upload/20250831_ch_second_q03.pdf) | 18       | `29A39AA95895E7F6B089ADC9CFC6C2D36EC9EDBDCADF84A7459586A438C957CF` |
+| 法規 | [20250831_ch_second_q04.pdf](https://www.shiken.or.jp/chief/upload/20250831_ch_second_q04.pdf) | 15       | `C7F26F319A74FA283770DEE777E8DAC5CF86824FB93433F8595CD2900E50B609` |
+| 解答 | [20250831_ch_second_a01.pdf](https://www.shiken.or.jp/chief/upload/20250831_ch_second_a01.pdf) | 1        | `1FACC27C2AE522CF40DEC746E16EC4F9C72C90B04A39CE52F73F6F194B143263` |
+
+## 2024年度（令和6年度，2024-08-18実施）
+
+2026-11-28取り込み。図21点。
+
+| 科目 | ファイル                                                                                       | ページ数 | SHA-256                                                            |
+| ---- | ---------------------------------------------------------------------------------------------- | -------- | ------------------------------------------------------------------ |
+| 理論 | [20240818_ch_second_q01.pdf](https://www.shiken.or.jp/chief/upload/20240818_ch_second_q01.pdf) | 19       | `F45338083CAF11791BFB47A725D163AFB47D5794C784C0FD8BCAFC5806AD1373` |
+| 電力 | [20240818_ch_second_q02.pdf](https://www.shiken.or.jp/chief/upload/20240818_ch_second_q02.pdf) | 10       | `6E6B4E34D063735FFD70BD5336C0E9172C28010F7FF26D0A423CD9A15F18192C` |
+| 機械 | [20240818_ch_second_q03.pdf](https://www.shiken.or.jp/chief/upload/20240818_ch_second_q03.pdf) | 17       | `638C7347BC9F960501A2DAB93DD5C4006280E8CB848A6BC8C76AA7EC874CB9B7` |
+| 法規 | [20240818_ch_second_q04.pdf](https://www.shiken.or.jp/chief/upload/20240818_ch_second_q04.pdf) | 12       | `1AF85AEF68C88A9CD53793336AE5E93B100575FF3A11C8859CE514B0605907B3` |
+| 解答 | [20240818_ch_second_a01.pdf](https://www.shiken.or.jp/chief/upload/20240818_ch_second_a01.pdf) | 1        | `22629AB78519128D5280F6F0A2F40E129514F870AFFE23F0AAEF5BE4BC636D29` |
+
 ## ファイル
 
 `src/content/questions/<year>-primary-<subject>-q<NN>.md`（subjectは `theory` / `power` / `machine` / `law`）。各ファイルの `sourceUrl` に原本PDFのページ、`sourceNote` に冊子ページを記録しています。図は原本から切り出したPNGで `src/assets/question-diagrams/<year>/<year>-primary-*.png`。
@@ -35,6 +47,7 @@
 ## 転記の扱い
 
 - 空欄は `［(1)］` の形で表記。解答群は `### 問Nの解答群` に (イ)〜(ヨ) の順で列挙。
+- 選択肢が回路図やグラフの場合（2024年度機械問4・問6，理論問2）は，切り出した図を解答群の項目に埋め込む。
 - 組合せ形式（2026年度機械問7）や小問ごとに解答群がある形式（2025年度機械問8）は，解答群を本文に置き，解答に記号と語句を記載。
 - 法規の冒頭の注（用語の略称と，基準日時点の法令に基づく旨）は各問の冒頭に引用で記載。
 - 理論・機械の問7・問8は選択問題で、その旨を各問の冒頭に引用で記載。
