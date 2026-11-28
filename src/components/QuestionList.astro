@@ -4,20 +4,24 @@ import { examStages, subjects, topics } from '../lib/taxonomy';
 interface Props {
   questions: Question[];
   emptyMessage?: string;
-  headingLevel?: 2 | 3;
+  headingLevel?: 2 | 3 | 4;
 }
 const {
   questions,
   emptyMessage = '公開済みの問題はまだありません。',
   headingLevel = 2,
 } = Astro.props;
-const Heading = headingLevel === 3 ? 'h3' : 'h2';
+const Heading = `h${headingLevel}` as 'h2' | 'h3' | 'h4';
 ---
 
 {questions.length ? (
   <ol class="question-list">
     {questions.map((question) => (
-      <li class="question-entry">
+      <li
+        class="question-entry"
+        data-year={question.data.year}
+        data-subject={question.data.subject}
+      >
         <p class="entry-meta">
           <span>{question.data.year}年度</span>
           <span>

@@ -210,6 +210,69 @@ test('Markdownのコピー値が数式を含めて原文と一致し、成功・
   await expect(questionCopy).toBeEnabled();
 });
 
+test('年度ページは科目ごと、科目ページは年度ごとにまとめ、ページ内リンクで移動できる', async ({
+  page,
+}) => {
+  const count = (year: number, subject: string) =>
+    entries.filter(
+      (entry) => entry.data.year === year && entry.data.subject === subject,
+    ).length;
+  await page.goto('/years/2016/');
+  const jump = page.getByRole('navigation', { name: '科目へ移動' });
+  await jump.getByRole('link', { name: '二次試験 電力・管理' }).click();
+  await expect(page).toHaveURL(/\/years\/2016\/#power-management$/);
+  await expect(page.locator('#power-management .question-entry')).toHaveCount(
+    count(2016, 'power-management'),
+  );
+  await page.goto('/subjects/power-management/');
+  await expect(
+    page.getByRole('navigation', { name: '年度へ移動' }),
+  ).toBeVisible();
+  await expect(page.locator('#year-2016 .question-entry')).toHaveCount(
+    count(2016, 'power-management'),
+  );
+  await expect(page.locator('.question-filter')).toHaveCount(0);
+});
+
+test('問題一覧を年度・科目で絞り込み、条件をURLに残せる', async ({ page }) => {
+  const all = entries.length;
+  const match = entries.filter(
+    (entry) =>
+      entry.data.year === 2016 && entry.data.subject === 'power-management',
+  ).length;
+  await page.goto('/questions/');
+  const filter = page.getByRole('form', { name: '問題の絞り込み' });
+  await expect(page.locator('.question-entry:visible')).toHaveCount(all);
+  await filter.getByLabel('年度').selectOption('2016');
+  await filter.getByLabel('科目').selectOption('power-management');
+  await expect(page.locator('.question-entry:visible')).toHaveCount(match);
+  await expect(page).toHaveURL(/\?year=2016&subject=power-management$/);
+  await expect(filter.getByRole('status')).toHaveText(
+    `${match}問を表示中（全${all}問）`,
+  );
+  await expect(page.locator('#year-2025')).toBeHidden();
+  await page.reload();
+  await expect(filter.getByLabel('科目')).toHaveValue('power-management');
+  await expect(page.locator('.question-entry:visible')).toHaveCount(match);
+  await filter.getByRole('button', { name: '条件を解除' }).click();
+  await expect(page.locator('.question-entry:visible')).toHaveCount(all);
+  await expect(page).toHaveURL(/\/questions\/$/);
+});
+
+test('JavaScript無効でも一覧は全件をグループ表示し、絞り込みフォームは出さない', async ({
+  browser,
+  baseURL,
+}) => {
+  const context = await browser.newContext({ javaScriptEnabled: false });
+  const page = await context.newPage();
+  await page.goto(`${baseURL}/questions/`);
+  await expect(page.locator('.question-filter')).toBeHidden();
+  await expect(page.locator('.question-entry:visible')).toHaveCount(
+    entries.length,
+  );
+  await context.close();
+});
+
 test('ホームでAI解説向けのサイトであることを示す', async ({ page }) => {
   await page.goto('/');
   await expect(page.getByRole('heading', { level: 1 })).toHaveText(
@@ -217,6 +280,19 @@ test('ホームでAI解説向けのサイトであることを示す', async ({ 
   );
   await expect(page.getByRole('heading', { name: '使い方' })).toBeVisible();
   await expect(page.locator('.steps li')).toHaveCount(3);
+  const hero = page.locator('.hero');
+  await expect(
+    hero.getByRole('link', { name: '問題一覧を見る' }),
+  ).toBeVisible();
+  await expect(
+    hero.getByRole('link', { name: '解説記事を読む' }),
+  ).toHaveAttribute('href', '/articles/');
+  const topicDetails = page.locator('.topic-details');
+  await expect(topicDetails).not.toHaveAttribute('open', '');
+  const firstTopic = topicDetails.locator('a').first();
+  await expect(firstTopic).toBeHidden();
+  await topicDetails.locator('summary').click();
+  await expect(firstTopic).toBeVisible();
 });
 
 test('ChatGPT・ClaudeへのリンクにプロンプトをURLで渡し、全文もコピーできる', async ({

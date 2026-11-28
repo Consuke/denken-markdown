@@ -239,6 +239,109 @@ main.shell {
   padding-left: 1rem;
   border-left: 1px solid var(--line);
 }
+.question-group > h2,
+.question-subgroup > h3 {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  margin: 2rem 0 0;
+  padding-bottom: 0.3rem;
+  border-bottom: 2px solid var(--accent-line);
+  scroll-margin-top: 1rem;
+}
+.question-group > h2 {
+  font-size: 1.2rem;
+}
+.question-subgroup > h3 {
+  margin-top: 1.25rem;
+  border-bottom-width: 1px;
+  font-size: 1rem;
+}
+.question-group,
+.question-subgroup {
+  scroll-margin-top: 1rem;
+}
+.group-count {
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: normal;
+}
+.group-jump ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  list-style: none;
+  margin: 0 0 1rem;
+  padding: 0;
+}
+.group-jump a {
+  display: inline-block;
+  padding: 0.3rem 0.7rem;
+  border: 1px solid var(--accent-line);
+  border-radius: 999px;
+  background: var(--accent-soft);
+  font-size: 0.85rem;
+  text-decoration: none;
+}
+.group-jump a:hover {
+  border-color: var(--accent);
+}
+.question-filter {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1rem;
+  margin: 0 0 1rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #fafafa;
+  font-size: 0.9rem;
+}
+.question-filter label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.question-filter select,
+.filter-reset {
+  min-height: 36px;
+  padding: 0.2rem 0.5rem;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  background: white;
+  font: inherit;
+}
+.filter-reset {
+  color: var(--accent);
+  cursor: pointer;
+}
+.filter-status {
+  flex-basis: 100%;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.filter-status:empty {
+  display: none;
+}
+.topic-details > summary {
+  width: fit-content;
+  min-height: 36px;
+  cursor: pointer;
+}
+.topic-details > summary > :is(h2, h3) {
+  display: inline;
+  margin: 0;
+}
+.topic-count {
+  margin-left: 0.5rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.topic-details > ul {
+  margin-top: 0.4rem;
+}
 .question-list {
   list-style: none;
   margin: 0;
@@ -257,7 +360,7 @@ main.shell {
   font-size: 0.85rem;
   margin: 0 0 0.2rem;
 }
-.question-entry :is(h2, h3) {
+.question-entry :is(h2, h3, h4) {
   font-size: 1rem;
   margin: 0.15rem 0 0.35rem;
   font-weight: 500;
@@ -462,6 +565,9 @@ main.shell {
   color: #333;
 }
 .hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
   margin-top: 1.25rem;
 }
 .button-primary,

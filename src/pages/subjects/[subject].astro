@@ -33,6 +33,8 @@ const title = `${stage}「${subjects[subject].label}」の問題`;
   title={title}
   description={subjects[subject].description}
   questions={questions}
+  groupBy={['year']}
+  jumpLinks
   breadcrumbs={[
     { label: '問題一覧', href: '/questions/' },
     { label: `${stage} ${subjects[subject].label}` },

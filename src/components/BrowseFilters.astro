@@ -10,7 +10,10 @@ import {
 } from '../lib/taxonomy';
 interface Props {
   headingLevel?: 2 | 3;
+  /** 分野別を折りたたむ（ホームで項目が多く、下の内容を押し下げるため）。 */
+  collapseTopics?: boolean;
 }
+const { collapseTopics = false } = Astro.props;
 const Heading = Astro.props.headingLevel === 3 ? 'h3' : 'h2';
 const all = await getVisibleQuestions();
 // 表示対象の問題がある科目・分野だけを並べる（ページも同じ条件で出力）。
@@ -25,6 +28,7 @@ const subjectGroups = examStageSlugs
     ),
   }))
   .filter((group) => group.items.length > 0);
+const usedTopicSlugs = topicSlugs.filter((topic) => usedTopics.has(topic));
 const years = [...new Set(all.map((question) => question.data.year))].sort(
   (a, b) => b - a,
 );
@@ -58,16 +62,34 @@ const years = [...new Set(all.map((question) => question.data.year))].sort(
       </ul>
     </section>
   )}
-  <section>
-    <Heading>分野別</Heading>
-    <ul>
-      {topicSlugs
-        .filter((topic) => usedTopics.has(topic))
-        .map((topic) => (
-          <li>
-            <a href={'/topics/' + topic + '/'}>{topics[topic].label}</a>
-          </li>
-        ))}
-    </ul>
-  </section>
+  {usedTopicSlugs.length > 0 && (
+    <section>
+      {collapseTopics ? (
+        <details class="topic-details">
+          <summary>
+            <Heading>分野別</Heading>
+            <span class="topic-count">{usedTopicSlugs.length}分野</span>
+          </summary>
+          <ul>
+            {usedTopicSlugs.map((topic) => (
+              <li>
+                <a href={'/topics/' + topic + '/'}>{topics[topic].label}</a>
+              </li>
+            ))}
+          </ul>
+        </details>
+      ) : (
+        <>
+          <Heading>分野別</Heading>
+          <ul>
+            {usedTopicSlugs.map((topic) => (
+              <li>
+                <a href={'/topics/' + topic + '/'}>{topics[topic].label}</a>
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
+    </section>
+  )}
 </nav>

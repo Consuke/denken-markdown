@@ -8,5 +8,7 @@ const questions = await getVisibleQuestions();
   title="問題一覧"
   description="電験二種（一次試験・二次試験）の問題一覧。年度・科目・分野別に問題と公式解答を掲載しています。"
   questions={questions}
+  groupBy={['year', 'subject']}
+  filter
   breadcrumbs={[{ label: '問題一覧' }]}
 />

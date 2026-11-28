@@ -35,14 +35,41 @@ const range = (values: number[]) =>
       )}
       <h1 id="hero-title">過去問を、そのままAIに解説させる。</h1>
       <p class="hero-lead">
-        問題文と公式解答をMarkdown・LaTeX形式で収録しています。各問題の「ChatGPTで解説」「Claudeで解説」ボタンを押すと、問題文が入力された状態でAIが開きます。
+        問題文と公式解答をLaTeX形式で収録。ボタン一つで、ChatGPT・Claudeが解説します。
       </p>
       <p class="hero-actions">
         <a class="button-primary" href="/questions/">
           問題一覧を見る
         </a>
+        {articles.length > 0 && (
+          <a class="button-primary" href="/articles/">
+            解説記事を読む
+          </a>
+        )}
       </p>
     </section>
+
+    <section class="home-section" aria-labelledby="browse-title">
+      <h2 id="browse-title">問題を探す</h2>
+      {questions.some((question) => question.data.sample) && (
+        <p class="sample-notice">架空のサンプル問題を含みます。</p>
+      )}
+      {questions.length === 0 && <p>公開済みの問題はまだありません。</p>}
+      <BrowseFilters headingLevel={3} collapseTopics />
+      <p class="all-questions">
+        <a href="/questions/">すべての問題を見る</a>
+      </p>
+    </section>
+
+    {articles.length > 0 && (
+      <section class="home-section" aria-labelledby="articles-title">
+        <h2 id="articles-title">新着の解説記事</h2>
+        <ArticleList articles={articles.slice(0, 3)} headingLevel={3} />
+        <p class="all-questions">
+          <a href="/articles/">すべての記事を見る</a>
+        </p>
+      </section>
+    )}
 
     <section class="home-section" aria-labelledby="steps-title">
       <h2 id="steps-title">使い方</h2>
@@ -90,27 +117,5 @@ const range = (values: number[]) =>
         AIの解説は誤りを含むことがあります。公式解答と照らし合わせて確認してください。
       </p>
     </section>
-
-    <section class="home-section" aria-labelledby="browse-title">
-      <h2 id="browse-title">問題を探す</h2>
-      {questions.some((question) => question.data.sample) && (
-        <p class="sample-notice">架空のサンプル問題を含みます。</p>
-      )}
-      {questions.length === 0 && <p>公開済みの問題はまだありません。</p>}
-      <BrowseFilters headingLevel={3} />
-      <p class="all-questions">
-        <a href="/questions/">すべての問題を見る</a>
-      </p>
-    </section>
-
-    {articles.length > 0 && (
-      <section class="home-section" aria-labelledby="articles-title">
-        <h2 id="articles-title">新着の解説記事</h2>
-        <ArticleList articles={articles.slice(0, 3)} headingLevel={3} />
-        <p class="all-questions">
-          <a href="/articles/">すべての記事を見る</a>
-        </p>
-      </section>
-    )}
   </div>
 </BaseLayout>

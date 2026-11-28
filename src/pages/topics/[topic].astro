@@ -32,6 +32,8 @@ const title = `${topics[topic].label}の問題`;
   title={title}
   description={topics[topic].description}
   questions={questions}
+  groupBy={['subject', 'year']}
+  filter
   articles={articles}
   breadcrumbs={[
     { label: '問題一覧', href: '/questions/' },

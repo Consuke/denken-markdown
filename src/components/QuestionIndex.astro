@@ -3,15 +3,23 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Breadcrumbs, { type Crumb } from './Breadcrumbs.astro';
 import BrowseFilters from './BrowseFilters.astro';
 import QuestionList from './QuestionList.astro';
+import QuestionFilter from './QuestionFilter.astro';
 import type { Question } from '../lib/questions';
 import ArticleList from './ArticleList.astro';
 import type { Article } from '../lib/articles';
+import { groupQuestions, type GroupKey } from '../lib/question-groups';
 interface Props {
   title: string;
   description: string;
   questions: Question[];
   breadcrumbs: Crumb[];
   articles?: Article[];
+  /** 見出しでまとめる順（最大2段）。例: ['year', 'subject'] */
+  groupBy?: GroupKey[];
+  /** 1段目のグループへのページ内リンクを出す。 */
+  jumpLinks?: boolean;
+  /** 年度・科目の絞り込みフォームを出す。 */
+  filter?: boolean;
 }
 const {
   title,
@@ -19,7 +27,12 @@ const {
   questions,
   breadcrumbs,
   articles = [],
+  groupBy = [],
+  jumpLinks = false,
+  filter = false,
 } = Astro.props;
+const groups = groupQuestions(questions, groupBy.slice(0, 2));
+const jumpLabel = groupBy[0] === 'year' ? '年度へ移動' : '科目へ移動';
 ---
 
 <BaseLayout title={title} description={description}>
@@ -43,6 +56,57 @@ const {
         />
       </section>
     )}
-    <QuestionList questions={questions} />
+    {filter && questions.length > 0 && <QuestionFilter questions={questions} />}
+    {jumpLinks && groups.length > 1 && (
+      <nav class="group-jump" aria-label={jumpLabel}>
+        <ul>
+          {groups.map((group) => (
+            <li>
+              <a href={'#' + group.id}>{group.label}</a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    )}
+    {groups.length === 0 ? (
+      <QuestionList questions={questions} />
+    ) : (
+      groups.map((group) => (
+        <section
+          class="question-group"
+          id={group.id}
+          aria-labelledby={group.id + '-title'}
+          data-question-group
+        >
+          <h2 id={group.id + '-title'}>
+            {group.label}
+            <span class="group-count">{group.questions.length}問</span>
+          </h2>
+          {group.children.length === 0 ? (
+            <QuestionList questions={group.questions} headingLevel={3} />
+          ) : (
+            group.children.map((child) => (
+              <section
+                class="question-subgroup"
+                id={child.id}
+                aria-labelledby={child.id + '-title'}
+                data-question-group
+              >
+                <h3 id={child.id + '-title'}>
+                  {child.label}
+                  <span class="group-count">{child.questions.length}問</span>
+                </h3>
+                <QuestionList questions={child.questions} headingLevel={4} />
+              </section>
+            ))
+          )}
+        </section>
+      ))
+    )}
+    {filter && (
+      <p class="empty-state filter-empty" hidden>
+        条件に合う問題はありません。
+      </p>
+    )}
   </div>
 </BaseLayout>

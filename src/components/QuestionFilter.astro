@@ -1,0 +1,50 @@
+---
+import type { Question } from '../lib/questions';
+import { groupQuestions } from '../lib/question-groups';
+interface Props {
+  questions: Question[];
+}
+const { questions } = Astro.props;
+const years = groupQuestions(questions, ['year']);
+const subjectGroups = groupQuestions(questions, ['subject']);
+// 選択肢が1つしかない条件は出さない。どちらも1つならフォーム自体を出さない。
+const showYear = years.length > 1;
+const showSubject = subjectGroups.length > 1;
+---
+
+{/* JavaScriptが動くときだけ表示する（無効時は全件をそのまま表示）。 */}
+{(showYear || showSubject) && (
+  <form class="question-filter" aria-label="問題の絞り込み" hidden>
+    {showYear && (
+      <label>
+        <span>年度</span>
+        <select name="year">
+          <option value="">すべて</option>
+          {years.map((group) => (
+            <option value={group.id.replace('year-', '')}>{group.label}</option>
+          ))}
+        </select>
+      </label>
+    )}
+    {showSubject && (
+      <label>
+        <span>科目</span>
+        <select name="subject">
+          <option value="">すべて</option>
+          {subjectGroups.map((group) => (
+            <option value={group.id}>{group.label}</option>
+          ))}
+        </select>
+      </label>
+    )}
+    <button type="button" class="filter-reset" hidden>
+      条件を解除
+    </button>
+    <p class="filter-status" role="status"></p>
+  </form>
+)}
+
+<script>
+  import { installQuestionFilter } from '../lib/question-filter';
+  installQuestionFilter();
+</script>
